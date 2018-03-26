@@ -1,7 +1,4 @@
 {
-  "name": "dog-bytes-jrs",
-  "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
@@ -12,15 +9,12 @@
     "pouchdb-core": "^6.4.3",
     "pouchdb-find": "^6.4.3",
     "ramda": "^0.25.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-scripts": "1.1.1",
     "slugify": "^1.2.9"
   },
+  "devDependencies": {
+    "nodemon": "^1.17.2"
+  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "start": "nodemon server.js"
   }
 }
