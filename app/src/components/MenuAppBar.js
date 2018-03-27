@@ -6,8 +6,9 @@ import IconButton from 'material-ui/IconButton'
 import MenuIcon from 'material-ui-icons/Menu'
 import GoBackIcon from 'material-ui-icons/KeyboardArrowLeft'
 import { withStyles } from 'material-ui/styles'
-import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+// import { connect } from 'react-redux'
+// import { Link } from 'react-router-dom'
+import { TOGGLE_DRAWER } from '../constants'
 
 const styles = theme => ({
   root: {
@@ -36,18 +37,20 @@ const MenuAppBar = props => {
           {props.showBackArrow ? (
             <IconButton
               className={classes.firstButton}
-              color="primary"
+              color="secondary"
               aria-label="Menu"
-              onClick={e => props.navigateBack(props.history)}
+              onClick={null}
+              //{e => props.navigateBack(props.history)}
             >
               <GoBackIcon />
             </IconButton>
           ) : (
             <IconButton
               className={classes.firstButton}
-              color="primary"
+              color="secondary"
               aria-label="Menu"
-              onClick={props.toggleDrawer}
+              onClick={null}
+              //{props.toggleDrawer}
             >
               <MenuIcon />
             </IconButton>
@@ -60,5 +63,20 @@ const MenuAppBar = props => {
     </div>
   )
 }
+
+// const mapStateToProps = state => {
+//   return {
+//     drawerToggleState: state.drawer
+//   }
+// }
+
+// const mapActionsToProps = dispatch => {
+//   return {
+//     toggleDrawer: () => dispatch({ type: TOGGLE_DRAWER }),
+//     navigateBack: history => {
+//       history.goBack()
+//     }
+//   }
+// }
 
 export default withStyles(styles)(MenuAppBar)
