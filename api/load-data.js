@@ -32,14 +32,14 @@ db
       date: '03/22/2018'
     },
     {
-      _id: null,
+      _id: 'video_extra-test-video',
       type: 'video',
       name: null,
       desc: null,
       instructor: 'Trip Ottinger',
       instructorPicData: null,
       duration: null,
-      youTubeVideoURL: 'https://youtu.be/1u1WsblQ6fc',
+      youTubeVideoURL: 'null',
       tags: [null],
       date: null
     }
