@@ -4,7 +4,6 @@ import MenuAppBar from '../../components/MenuAppBar'
 import VideoListItem from '../../components/VideoListItem'
 import { map } from 'ramda'
 import { connect } from 'react-redux'
-import { videos } from '../../reducers/videos'
 
 const Videos = props => {
   const { videos } = props

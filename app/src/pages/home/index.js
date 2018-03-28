@@ -1,20 +1,28 @@
 import React from 'react'
 import MenuAppBar from '../../components/MenuAppBar'
+import { withStyles } from 'material-ui/styles'
+
+const url = 'http://localhost:3000'
+const imgUrl = '/jrs-coding-logo.jpg'
+
+const styles = theme => ({
+  background: {
+    backgroundImage: 'url(' + imgUrl + ')',
+    backgroundSize: 'cover',
+    paddingTop: '200px'
+  }
+})
 
 const Home = props => {
+  const { classes } = props
   return (
     <div>
-      <MenuAppBar title="Home Page" />
       <center>
-        <h1 style={{ paddingTop: '60px' }}> Home page </h1>
-        <img
-          src="/jrs-coding-logo.jpg"
-          alt="JRS coding school logo"
-          style={{ width: '300px' }}
-        />
+        <MenuAppBar title="Home Page" />
+        <h1 className={classes.background} />
       </center>
     </div>
   )
 }
 
-export default Home
+export default withStyles(styles)(Home)

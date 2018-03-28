@@ -8,7 +8,7 @@ import GoBackIcon from 'material-ui-icons/KeyboardArrowLeft'
 import { withStyles } from 'material-ui/styles'
 // import { connect } from 'react-redux'
 // import { Link } from 'react-router-dom'
-import { TOGGLE_DRAWER } from '../constants'
+// import { TOGGLE_DRAWER } from '../constants'
 
 const styles = theme => ({
   root: {
