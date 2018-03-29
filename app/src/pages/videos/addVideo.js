@@ -46,6 +46,7 @@ const AddVideo = props => {
             label="Video Content Tags"
             margin="normal"
             value={props.video.tags}
+            helperText="Enter videos tags separated by spaces"
             onChange={e => props.onChange('tags', e.target.value)}
           />
         </FormControl>
