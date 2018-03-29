@@ -76,7 +76,6 @@ const mapActionsToProps = dispatch => {
     onSubmit: (history, video) => e => {
       e.preventDefault()
       video.tags = split(' ', video.tags)
-      console.log('VIDEO TAGS', video.tags)
       dispatch(addVideo(video, history))
     },
     cancel: history => e => {

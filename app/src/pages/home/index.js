@@ -19,7 +19,7 @@ const Home = props => {
     <div>
       <center>
         <MenuAppBar title="Home Page" />
-        <h1 className={classes.background} />
+        <div className={classes.background} />
       </center>
     </div>
   )
