@@ -14,7 +14,7 @@ const Videos = props => {
       <MenuAppBar title="Videos" />
       <List>{map(video => <VideoListItem video={video} />, videos)}</List>
       <Link to="/videos/add">
-        <Button>Add Video </Button>
+        <Button>Add Video</Button>
       </Link>
     </div>
   )
