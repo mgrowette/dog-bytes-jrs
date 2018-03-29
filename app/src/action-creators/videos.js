@@ -15,7 +15,6 @@ export const getVideos = async (dispatch, getState) => {
 
 export const getVideo = id => async (dispatch, getState) => {
   const video = await fetch(`${url}/videos/${id}`).then(res => res.json())
-  console.log('RESULT OF VIDEO FETCH', video)
   dispatch({ type: GET_VIDEO, payload: video })
 }
 
