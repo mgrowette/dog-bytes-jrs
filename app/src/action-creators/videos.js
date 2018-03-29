@@ -20,8 +20,9 @@ export const getVideo = id => async (dispatch, getState) => {
 
 export const addVideo = (video, history) => async (dispatch, getState) => {
   const method = 'POST'
-  const headers = { 'Conetent-Type': 'application/json' }
+  const headers = { 'Content-Type': 'application/json' }
   const body = JSON.stringify(video)
+  console.log('ACTION CREATOR METHOD, HEADERS, BODY', method, headers, body)
   await fetch(`${url}/videos`, { method, headers, body })
     .then(res => res.json())
     .catch(err => console.log(err))
@@ -32,4 +33,9 @@ export const addVideo = (video, history) => async (dispatch, getState) => {
 
 export const changeVideo = (field, value) => (dispatch, getState) => {
   dispatch({ type: CHANGE_VIDEO_CHARACTER, payload: { [field]: value } })
+}
+
+export const cancel = history => (dispatch, getState) => {
+  dispatch({ type: RESET_ADD_VIDEO_FORM })
+  history.push('/videos')
 }

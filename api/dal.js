@@ -8,7 +8,8 @@ const getVideo = id => getDoc(id)
 
 const addVideo = doc => {
   const docId = `${doc.name} ${join(' ', doc.tags)}`
-  console.log('Whats the docId?', docId)
+  // console.log('API SIDE DOC.TAGS', doc.tags)
+  // console.log('Whats the docId?', docId)
   doc.type = 'video'
   doc._id = `${toLower(doc.type)}_${slugify(docId, { lower: true })}`
   return addDoc(doc)
