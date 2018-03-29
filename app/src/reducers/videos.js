@@ -4,7 +4,8 @@ import {
   RESET_ADD_VIDEO_FORM,
   CHANGE_VIDEO_CHARACTER,
   TOGGLE_EXPANDED,
-  EDIT_FIELD_FORM
+  EDIT_FIELD_FORM,
+  RESET_EDIT_VIDEO_FORM
 } from '../constants'
 import { merge, not } from 'ramda'
 
@@ -23,6 +24,8 @@ export const video = (state = {}, action) => {
       return action.payload
     case EDIT_FIELD_FORM:
       return merge(state, action.payload)
+    case RESET_EDIT_VIDEO_FORM:
+      return state
     default:
       return state
   }
