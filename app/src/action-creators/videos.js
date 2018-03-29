@@ -16,6 +16,7 @@ export const getVideos = async (dispatch, getState) => {
 }
 
 export const getVideo = id => async (dispatch, getState) => {
+  console.log('GETVIDEO DISPATCHED', id)
   const video = await fetch(`${url}/videos/${id}`).then(res => res.json())
   dispatch({ type: GET_VIDEO, payload: video })
 }
@@ -32,9 +33,9 @@ export const addVideo = (video, history) => async (dispatch, getState) => {
   history.push('/videos')
 }
 
-export const editVideo = (video, history) => async (dispatch, getState) => {
+export const editVideo = (history, video) => async (dispatch, getState) => {
   const method = 'PUT'
-  const headers = { 'Content-Type': 'applicaton/json' }
+  const headers = { 'Content-Type': 'application/json' }
   const body = JSON.stringify(video)
   await fetch(`${url}/videos/${video._id}`, { method, headers, body })
     .then(res => res.json())

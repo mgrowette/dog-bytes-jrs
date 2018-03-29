@@ -66,7 +66,6 @@ const mapActionsToProps = dispatch => {
     onChange: (field, value) => dispatch(editVideoField(field, value)),
     onSubmit: (history, video) => e => {
       e.preventDefault()
-      video.tags = split(' ', video.tags)
       dispatch(editVideo(history, video))
     },
     cancel: (history, video) => e => dispatch(cancelEdit(history, video))
