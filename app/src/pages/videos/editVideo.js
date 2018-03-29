@@ -12,7 +12,6 @@ import {
 } from '../../action-creators/videos'
 
 const EditVideo = props => {
-  console.log('PROPS.VIDEO.TAGS:', props.video.tags)
   return (
     <div>
       <MenuAppBar title="Edit Video" showBackArrow={true} {...props} />
