@@ -4,8 +4,7 @@ import {
   GET_VIDEO,
   CHANGE_VIDEO_CHARACTER,
   RESET_ADD_VIDEO_FORM,
-  EDIT_FIELD_FORM,
-  RESET_EDIT_VIDEO_FORM
+  EDIT_FIELD_FORM
 } from '../constants'
 
 const url = 'http://localhost:5000'
@@ -16,7 +15,6 @@ export const getVideos = async (dispatch, getState) => {
 }
 
 export const getVideo = id => async (dispatch, getState) => {
-  console.log('GETVIDEO DISPATCHED', id)
   const video = await fetch(`${url}/videos/${id}`).then(res => res.json())
   dispatch({ type: GET_VIDEO, payload: video })
 }
@@ -44,6 +42,16 @@ export const editVideo = (history, video) => async (dispatch, getState) => {
   history.push(`/videos/${video._id}`)
 }
 
+export const deleteVideo = (id, history) => async (dispatch, getState) => {
+  const method = 'DELETE'
+  const headers = { 'Content-Type': 'application/json' }
+  await fetch(`${url}/videos/${id}`, { method, headers }).then(res =>
+    res.json()
+  )
+  dispatch(getVideos)
+  history.push('/videos')
+}
+
 export const changeVideo = (field, value) => (dispatch, getState) => {
   dispatch({ type: CHANGE_VIDEO_CHARACTER, payload: { [field]: value } })
 }
@@ -54,7 +62,6 @@ export const cancel = history => (dispatch, getState) => {
 }
 
 export const cancelEdit = (history, video) => (dispatch, getState) => {
-  dispatch({ type: RESET_EDIT_VIDEO_FORM })
   history.push(`/videos/${video._id}`)
 }
 
