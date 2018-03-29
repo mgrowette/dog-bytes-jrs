@@ -1,35 +1,33 @@
 import React from 'react'
-import { FormControl } from 'material-ui/Form'
-import TextField from 'material-ui/TextField'
 import { connect } from 'react-redux'
 import MenuAppBar from '../../components/MenuAppBar'
+import { FormControl } from 'material-ui/Form'
+import TextField from 'material-ui/TextField'
 import Button from 'material-ui/Button'
-import { changeVideo, addVideo, cancel } from '../../action-creators/videos'
-import { split } from 'ramda'
+import { split, join } from 'ramda'
+import {
+  editVideoField,
+  editVideo,
+  cancelEdit
+} from '../../action-creators/videos'
 
-const AddVideo = props => {
+const EditVideo = props => {
+  console.log('PROPS.VIDEO.TAGS:', props.video.tags)
   return (
     <div>
-      <MenuAppBar title="Add a Video" {...props} showBackArrow={true} />
+      <MenuAppBar title="Edit Video" showBackArrow={true} {...props} />
       <form>
         <FormControl noValidate autoComplete="off">
           <TextField
             id="name"
-            label="Video Name"
+            label="Name"
             margin="normal"
             value={props.video.name}
             onChange={e => props.onChange('name', e.target.value)}
           />
           <TextField
-            id="instructor"
-            label="Video Instructor"
-            margin="normal"
-            value={props.video.instructor}
-            onChange={e => props.onChange('instructor', e.target.value)}
-          />
-          <TextField
             id="desc"
-            label="Video Description"
+            label="Description"
             margin="normal"
             value={props.video.desc}
             onChange={e => props.onChange('desc', e.target.value)}
@@ -45,45 +43,37 @@ const AddVideo = props => {
             id="tags"
             label="Video Content Tags"
             margin="normal"
-            value={props.video.tags}
-            helperText="Enter videos tags separated by spaces"
+            value={join(' ', props.video.tags)}
             onChange={e => props.onChange('tags', e.target.value)}
           />
         </FormControl>
-        <Button
-          variant="flat"
-          component="span"
-          color="primary"
-          onClick={props.onSubmit(props.history, props.video)}
-        >
+        <Button onClick={props.onSubmit(props.history, props.video)}>
           Submit
         </Button>
-        <Button onClick={props.cancel(props.history)}>Cancel</Button>
+        <Button onClick={props.cancel(props.history, props.video)}>
+          Cancel
+        </Button>
       </form>
     </div>
   )
 }
 
 const mapStateToProps = state => {
-  return {
-    video: state.addVideo
-  }
+  return { video: state.video }
 }
 
 const mapActionsToProps = dispatch => {
   return {
-    onChange: (field, value) => dispatch(changeVideo(field, value)),
+    onChange: (field, value) => dispatch(editVideoField(field, value)),
     onSubmit: (history, video) => e => {
       e.preventDefault()
       video.tags = split(' ', video.tags)
-      dispatch(addVideo(video, history))
+      dispatch(editVideo(history, video))
     },
-    cancel: history => e => {
-      dispatch(cancel(history))
-    }
+    cancel: (history, video) => e => dispatch(cancelEdit(history, video))
   }
 }
 
 const connector = connect(mapStateToProps, mapActionsToProps)
 
-export default connector(AddVideo)
+export default connector(EditVideo)

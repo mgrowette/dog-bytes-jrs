@@ -4,11 +4,12 @@ import VideoListItem from '../../components/VideoListItem'
 import { TOGGLE_EXPANDED } from '../../constants'
 import { connect } from 'react-redux'
 import ReactPlayer from 'react-player'
+import { Link } from 'react-router-dom'
 import { getVideo } from '../../action-creators/videos'
 import { withStyles } from 'material-ui/styles'
 import Card, {
   CardHeader,
-  CardMedia,
+  // CardMedia,
   CardContent,
   CardActions
 } from 'material-ui/Card'
@@ -18,8 +19,9 @@ import IconButton from 'material-ui/IconButton'
 import Typography from 'material-ui/Typography'
 import FavoriteIcon from 'material-ui-icons/Favorite'
 import ShareIcon from 'material-ui-icons/Share'
+import EditIcon from 'material-ui-icons/Edit'
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore'
-import MoreVertIcon from 'material-ui-icons/MoreVert'
+// import MoreVertIcon from 'material-ui-icons/MoreVert'
 import classnames from 'classnames'
 
 const styles = theme => ({
@@ -73,12 +75,14 @@ class Video extends React.Component {
               </Avatar>
             }
             action={
-              <IconButton>
-                <MoreVertIcon />
-              </IconButton>
+              <Link to={`/videos/${props.video._id}/edit`}>
+                <IconButton aria-label="Edit Video">
+                  <EditIcon />
+                </IconButton>
+              </Link>
             }
-            title="Shrimp and Chorizo Paella"
-            subheader="September 14, 2016"
+            title={props.video.name}
+            subheader={props.video.date}
           />
           <CardContent>
             <Typography component="p">
