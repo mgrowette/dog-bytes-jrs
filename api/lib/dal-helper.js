@@ -17,11 +17,14 @@ const addDoc = doc => db.put(doc)
 
 const updateDoc = doc => db.put(doc)
 
+const deleteDoc = id => db.get(id).then(doc => db.remove(doc))
+
 const dalHelper = {
   allDocs,
   getDoc,
   addDoc,
-  updateDoc
+  updateDoc,
+  deleteDoc
 }
 
 module.exports = dalHelper

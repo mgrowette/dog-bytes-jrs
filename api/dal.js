@@ -1,4 +1,10 @@
-const { allDocs, getDoc, addDoc, updateDoc } = require('./lib/dal-helper')
+const {
+  allDocs,
+  getDoc,
+  addDoc,
+  updateDoc,
+  deleteDoc
+} = require('./lib/dal-helper')
 const slugify = require('slugify')
 const { join, toLower } = require('ramda')
 
@@ -17,11 +23,14 @@ const addVideo = doc => {
 
 const updateVideo = doc => updateDoc(doc)
 
+const deleteVideo = id => deleteDoc(id)
+
 const dal = {
   getVideos,
   getVideo,
   addVideo,
-  updateVideo
+  updateVideo,
+  deleteVideo
 }
 
 module.exports = dal

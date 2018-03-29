@@ -1,4 +1,10 @@
-const { getVideos, getVideo, addVideo, updateVideo } = require('../dal')
+const {
+  getVideos,
+  getVideo,
+  addVideo,
+  updateVideo,
+  deleteVideo
+} = require('../dal')
 
 module.exports = app => {
   app.get('/videos', (req, res) => {
@@ -23,6 +29,11 @@ module.exports = app => {
   app.put('/videos/:id', (req, res) => {
     updateVideo(req.body)
       .then(doc => res.send(doc))
+      .catch(err => console.log(err))
+  })
+  app.delete('/videos/:id', (req, res) => {
+    deleteVideo(req.params.id)
+      .then(deletedVid => res.send(deletedVid))
       .catch(err => console.log(err))
   })
 }
