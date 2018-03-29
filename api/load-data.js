@@ -6,7 +6,7 @@ const db = new PouchDB(`${process.env.COUCH_URL}${process.env.COUCH_DBNAME}`)
 db
   .bulkDocs([
     {
-      _id: 'video_ramda_map_filter_reduce',
+      _id: 'video_ramda-map-filter-reduce',
       type: 'video',
       name: 'Ramda: Map, Filter, and Reduce',
       desc:
@@ -19,7 +19,7 @@ db
       date: '01/19/2018'
     },
     {
-      _id: 'video_material_ui_form_validation',
+      _id: 'video_material-ui-form-validation',
       type: 'video',
       name: 'Custom Form Validation - Part 1',
       desc:

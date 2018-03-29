@@ -5,7 +5,7 @@ import {
   CHANGE_VIDEO_CHARACTER,
   TOGGLE_EXPANDED,
   EDIT_FIELD_FORM,
-  RESET_EDIT_VIDEO_FORM
+  TOGGLE_DELETE
 } from '../constants'
 import { merge, not } from 'ramda'
 
@@ -24,8 +24,8 @@ export const video = (state = {}, action) => {
       return action.payload
     case EDIT_FIELD_FORM:
       return merge(state, action.payload)
-    case RESET_EDIT_VIDEO_FORM:
-      return state
+    case TOGGLE_DELETE:
+      return merge(state, { toggleDelete: not(state.toggleDelete) })
     default:
       return state
   }

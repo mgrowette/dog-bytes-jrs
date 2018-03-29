@@ -4,12 +4,20 @@ import MenuAppBar from '../../components/MenuAppBar'
 import { FormControl } from 'material-ui/Form'
 import TextField from 'material-ui/TextField'
 import Button from 'material-ui/Button'
-import { split, join } from 'ramda'
+import Dialog, {
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle
+} from 'material-ui/Dialog'
+import { join } from 'ramda'
 import {
   editVideoField,
   editVideo,
-  cancelEdit
+  cancelEdit,
+  deleteVideo
 } from '../../action-creators/videos'
+import { TOGGLE_DELETE } from '../../constants'
 
 const EditVideo = props => {
   return (
@@ -52,6 +60,35 @@ const EditVideo = props => {
         <Button onClick={props.cancel(props.history, props.video)}>
           Cancel
         </Button>
+        <Button color="secondary" onClick={props.toggleDelete}>
+          Delete
+        </Button>
+        <Dialog
+          open={props.video.toggleDelete}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">
+            {'Are you sure you want to delete this video?'}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              Confirm Delete
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={props.toggleDelete} color="primary">
+              Cancel
+            </Button>
+            <Button
+              onClick={() => props.deleteVideo(props.video._id, props.history)}
+              color="primary"
+              autoFocus
+            >
+              Confirm Delete
+            </Button>
+          </DialogActions>
+        </Dialog>
       </form>
     </div>
   )
@@ -68,7 +105,9 @@ const mapActionsToProps = dispatch => {
       e.preventDefault()
       dispatch(editVideo(history, video))
     },
-    cancel: (history, video) => e => dispatch(cancelEdit(history, video))
+    cancel: (history, video) => e => dispatch(cancelEdit(history, video)),
+    toggleDelete: () => dispatch({ type: TOGGLE_DELETE }),
+    deleteVideo: (id, history) => dispatch(deleteVideo(id, history))
   }
 }
 
