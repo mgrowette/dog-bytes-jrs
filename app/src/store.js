@@ -1,11 +1,13 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
-import { videos, video } from './reducers/videos'
+import { videos, video, addVideo, toggleExpanded } from './reducers/videos'
 import thunk from 'redux-thunk'
 
 const store = createStore(
   combineReducers({
     videos,
-    video
+    video,
+    addVideo,
+    toggleExpanded
   }),
   applyMiddleware(thunk)
 )
