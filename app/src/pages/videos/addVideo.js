@@ -35,11 +35,11 @@ const AddVideo = props => {
             onChange={e => props.onChange('desc', e.target.value)}
           />
           <TextField
-            id="url"
+            id="youTubeVideoURL"
             label="Youtube Video URL"
             margin="normal"
             value={props.video.youTubeVideoURL}
-            onChange={e => props.onChange('url', e.target.value)}
+            onChange={e => props.onChange('youTubeVideoURL', e.target.value)}
           />
           <TextField
             id="tags"
@@ -76,6 +76,10 @@ const mapActionsToProps = dispatch => {
     onSubmit: (history, video) => e => {
       e.preventDefault()
       video.tags = split(' ', video.tags)
+      console.log(
+        'WHY IS THIS URL BEING STUPID, video.youTubeVideoURL',
+        video.youTubeVideoURL
+      )
       dispatch(addVideo(video, history))
     },
     cancel: history => e => {
