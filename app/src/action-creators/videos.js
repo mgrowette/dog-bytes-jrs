@@ -3,7 +3,8 @@ import {
   SET_VIDEOS,
   GET_VIDEO,
   CHANGE_VIDEO_CHARACTER,
-  RESET_ADD_VIDEO_FORM
+  RESET_ADD_VIDEO_FORM,
+  EDIT_FIELD_FORM
 } from '../constants'
 
 const url = 'http://localhost:5000'
@@ -38,4 +39,15 @@ export const changeVideo = (field, value) => (dispatch, getState) => {
 export const cancel = history => (dispatch, getState) => {
   dispatch({ type: RESET_ADD_VIDEO_FORM })
   history.push('/videos')
+}
+
+export const editVideo = (field, value) => (dispatch, getState) => {
+  console.log(
+    '--------Action Creator-------------',
+    'field:',
+    field,
+    'value:',
+    value
+  )
+  dispatch({ type: EDIT_FIELD_FORM, payload: { [field]: value } })
 }

@@ -4,6 +4,7 @@ import VideoListItem from '../../components/VideoListItem'
 import { TOGGLE_EXPANDED } from '../../constants'
 import { connect } from 'react-redux'
 import ReactPlayer from 'react-player'
+import { Link } from 'react-router-dom'
 import { getVideo } from '../../action-creators/videos'
 import { withStyles } from 'material-ui/styles'
 import Card, {
@@ -18,6 +19,7 @@ import IconButton from 'material-ui/IconButton'
 import Typography from 'material-ui/Typography'
 import FavoriteIcon from 'material-ui-icons/Favorite'
 import ShareIcon from 'material-ui-icons/Share'
+import EditIcon from 'material-ui-icons/Edit'
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore'
 import MoreVertIcon from 'material-ui-icons/MoreVert'
 import classnames from 'classnames'
@@ -93,6 +95,11 @@ class Video extends React.Component {
             <IconButton aria-label="Share">
               <ShareIcon />
             </IconButton>
+            <Link to={`/videos/${props.video._id}/edit`}>
+              <IconButton aria-label="Edit Video">
+                <EditIcon />
+              </IconButton>
+            </Link>
             <IconButton
               className={classnames(classes.expand, {
                 [classes.expandOpen]: props.expanded.toggleExpanded
