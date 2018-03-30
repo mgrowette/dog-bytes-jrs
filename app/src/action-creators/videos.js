@@ -20,6 +20,7 @@ export const getVideo = id => async (dispatch, getState) => {
 }
 
 export const addVideo = (video, history) => async (dispatch, getState) => {
+  console.log('ADD VIDEO ACTION CREATOR, VIDEO:', video)
   const method = 'POST'
   const headers = { 'Content-Type': 'application/json' }
   const body = JSON.stringify(video)

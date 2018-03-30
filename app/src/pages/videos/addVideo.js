@@ -5,7 +5,9 @@ import { connect } from 'react-redux'
 import MenuAppBar from '../../components/MenuAppBar'
 import Button from 'material-ui/Button'
 import { changeVideo, addVideo, cancel } from '../../action-creators/videos'
-import { split } from 'ramda'
+import FileInput from '../../components/FileInput'
+import { split, compose, path, head, toUpper } from 'ramda'
+import { SET_PHOTO } from '../../constants'
 
 const AddVideo = props => {
   return (
@@ -59,6 +61,20 @@ const AddVideo = props => {
           Submit
         </Button>
         <Button onClick={props.cancel(props.history)}>Cancel</Button>
+        <div>
+          <FileInput onChange={props.handlePhoto}>
+            <img
+              src={
+                props.photo
+                  ? props.photo
+                  : "https://placehold.it/64x64?text='photo'"
+              }
+            />
+            <Button variant="flat" component="span" color="primary">
+              Upload Photo
+            </Button>
+          </FileInput>
+        </div>
       </form>
     </div>
   )
@@ -71,19 +87,24 @@ const mapStateToProps = state => {
 }
 
 const mapActionsToProps = dispatch => {
+  const doDispatch = (field, value) => {
+    dispatch({ type: SET_PHOTO + toUpper(field), payload: value })
+  }
   return {
     onChange: (field, value) => dispatch(changeVideo(field, value)),
     onSubmit: (history, video) => e => {
       e.preventDefault()
       video.tags = split(' ', video.tags)
-      console.log(
-        'WHY IS THIS URL BEING STUPID, video.youTubeVideoURL',
-        video.youTubeVideoURL
-      )
       dispatch(addVideo(video, history))
     },
     cancel: history => e => {
       dispatch(cancel(history))
+    },
+    handlePhoto: (e, results) => {
+      console.log('HANDLE PHOTO RESULTS:', results)
+      const blob = compose(path(['target', 'result']), head, head)(results)
+      console.log('CHECK OUT THE BLOB', blob)
+      doDispatch('PHOTO', blob)
     }
   }
 }

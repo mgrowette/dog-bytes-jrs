@@ -9,7 +9,7 @@ import { getVideo } from '../../action-creators/videos'
 import { withStyles } from 'material-ui/styles'
 import Card, {
   CardHeader,
-  // CardMedia,
+  CardMedia,
   CardContent,
   CardActions
 } from 'material-ui/Card'
