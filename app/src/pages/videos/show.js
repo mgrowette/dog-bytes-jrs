@@ -9,7 +9,7 @@ import { getVideo } from '../../action-creators/videos'
 import { withStyles } from 'material-ui/styles'
 import Card, {
   CardHeader,
-  // CardMedia,
+  CardMedia,
   CardContent,
   CardActions
 } from 'material-ui/Card'
@@ -43,6 +43,9 @@ const styles = theme => ({
   },
   expandOpen: {
     transform: 'rotate(180deg)'
+  },
+  image: {
+    height: 20
   }
 })
 
@@ -69,11 +72,7 @@ class Video extends React.Component {
         />
         <Card className={classes.card}>
           <CardHeader
-            avatar={
-              <Avatar aria-label="Recipe" className={classes.avatar}>
-                R
-              </Avatar>
-            }
+            avatar={<img src={props.video.photo} imgProps={classes.image} />}
             action={
               <Link to={`/videos/${props.video._id}/edit`}>
                 <IconButton aria-label="Edit Video">
