@@ -12,7 +12,7 @@ import { SET_PHOTO } from '../../constants'
 const AddVideo = props => {
   return (
     <div>
-      <MenuAppBar title="Add a Video" {...props} showBackArrow={true} />
+      <MenuAppBar title="Add a Video" {...props} />
       <form>
         <FormControl noValidate autoComplete="off">
           <TextField
@@ -88,7 +88,7 @@ const mapStateToProps = state => {
 
 const mapActionsToProps = dispatch => {
   const doDispatch = (field, value) => {
-    dispatch({ type: SET_PHOTO + toUpper(field), payload: value })
+    dispatch({ type: SET_PHOTO, payload: value })
   }
   return {
     onChange: (field, value) => dispatch(changeVideo(field, value)),
@@ -101,9 +101,7 @@ const mapActionsToProps = dispatch => {
       dispatch(cancel(history))
     },
     handlePhoto: (e, results) => {
-      console.log('HANDLE PHOTO RESULTS:', results)
       const blob = compose(path(['target', 'result']), head, head)(results)
-      console.log('CHECK OUT THE BLOB', blob)
       doDispatch('PHOTO', blob)
     }
   }

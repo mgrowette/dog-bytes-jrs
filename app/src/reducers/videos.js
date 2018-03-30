@@ -36,7 +36,7 @@ export const addVideo = (state = {}, action) => {
   switch (action.type) {
     case CHANGE_VIDEO_CHARACTER:
       return merge(state, action.payload)
-    case SET_PHOTO + 'PHOTO':
+    case SET_PHOTO:
       console.log('SET_PHOTO CALLED')
       return merge(state, { photo: action.payload })
     case RESET_ADD_VIDEO_FORM:
