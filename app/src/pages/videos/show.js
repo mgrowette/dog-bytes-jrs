@@ -85,10 +85,7 @@ class Video extends React.Component {
             subheader={props.video.date}
           />
           <CardContent>
-            <Typography component="p">
-              In this video, Trip explains why Ramda is unequivocally awesome.
-              He covers some mapping, reducing, and filtering. Enjoy.
-            </Typography>
+            <Typography component="p">{props.video.desc}</Typography>
           </CardContent>
           <CardActions className={classes.actions} disableActionSpacing>
             <IconButton aria-label="Add to favorites">

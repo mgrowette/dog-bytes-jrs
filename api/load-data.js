@@ -10,7 +10,7 @@ db
       type: 'video',
       name: 'Ramda: Map, Filter, and Reduce',
       desc:
-        'A video detailing the ins and outs of using Ramda to manipulate data, specifically using functions map(), filter(), and reduce()',
+        'In this video, Trip explains why Ramda is unequivocally awesome. He covers some mapping, reducing, and filtering. Enjoy.',
       instructor: 'Trip Ottinger',
       instructorPicData: null,
       duration: '3:03:00',
@@ -34,12 +34,13 @@ db
     {
       _id: 'video_extra-test-video',
       type: 'video',
-      name: null,
-      desc: null,
+      name: 'Testing, Testing, 1, 2, 3',
+      desc:
+        'This video exists for the sole purpose of taking up space so my videos list has more things to click on. It also demonstrates that Tommy Wiseau has no clue what noise a chicken makes. Enjoy.',
       instructor: 'Trip Ottinger',
       instructorPicData: null,
       duration: null,
-      youTubeVideoURL: 'null',
+      youTubeVideoURL: 'https://www.youtube.com/watch?v=XTO_zNnzSs0',
       tags: [null],
       date: null
     }
