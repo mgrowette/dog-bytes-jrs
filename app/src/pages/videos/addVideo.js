@@ -65,8 +65,8 @@ const AddVideo = props => {
           <FileInput onChange={props.handlePhoto}>
             <img
               src={
-                props.photo
-                  ? props.photo
+                props.video.photo
+                  ? props.video.photo
                   : "https://placehold.it/64x64?text='photo'"
               }
             />
