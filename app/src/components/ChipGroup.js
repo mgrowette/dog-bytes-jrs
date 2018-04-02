@@ -1,6 +1,6 @@
 import React from 'react'
-import { compose, uniq, flatten, map, filter, tap } from 'ramda'
-import List, { ListItem } from 'material-ui/List'
+import { compose, uniq, flatten, map, filter } from 'ramda'
+import { ListItem } from 'material-ui/List'
 import Chip from 'material-ui/Chip'
 
 export const ChipGroup = props => {
@@ -9,11 +9,11 @@ export const ChipGroup = props => {
       <h2>{props.category}</h2>
       <ListItem>
         {compose(
-          map(tag => (
+          map(chip => (
             <Chip
-              label={tag}
-              id={tag}
-              onClick={props.click}
+              label={chip}
+              id={chip}
+              onClick={e => props.click(props.category, chip)}
               category={props.category}
               data={props.data}
             />
@@ -27,34 +27,3 @@ export const ChipGroup = props => {
     </div>
   )
 }
-
-// const stackTags = compose(
-//   map(tag => (
-//     <ListItem id={tag}>
-//       <Chip label={tag} onClick={props.handleClick} />
-//     </ListItem>
-//   )),
-//   uniq,
-//   flatten,
-//   map(tag => tag.chips),
-//   filter(tag => tag.title === 'Stack')
-// )(videoTags)
-//
-//
-// const difficultyTags = compose(
-//   map(tag => (
-//     <ListItem id={tag}>
-//       <Chip label={tag} onClick={props.handleClick} />
-//     </ListItem>
-//   )),
-//   uniq,
-//   flatten,
-//   map(tag => tag.chips),
-//   filter(tag => tag.title === 'Difficulty')
-// )(videoTags)
-
-// const mapStateToProps = state => {
-//   return {
-//     videos: state.videos
-//   }
-// }

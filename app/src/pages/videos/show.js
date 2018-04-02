@@ -7,14 +7,8 @@ import ReactPlayer from 'react-player'
 import { Link } from 'react-router-dom'
 import { getVideo } from '../../action-creators/videos'
 import { withStyles } from 'material-ui/styles'
-import Card, {
-  CardHeader,
-  CardMedia,
-  CardContent,
-  CardActions
-} from 'material-ui/Card'
+import Card, { CardHeader, CardContent, CardActions } from 'material-ui/Card'
 import Collapse from 'material-ui/transitions/Collapse'
-import Avatar from 'material-ui/Avatar'
 import IconButton from 'material-ui/IconButton'
 import Typography from 'material-ui/Typography'
 import FavoriteIcon from 'material-ui-icons/Favorite'
@@ -72,7 +66,13 @@ class Video extends React.Component {
         />
         <Card className={classes.card}>
           <CardHeader
-            avatar={<img src={props.video.photo} imgProps={classes.image} />}
+            avatar={
+              <img
+                alt="screenshot of video"
+                src={props.video.photo}
+                imgProps={classes.image}
+              />
+            }
             action={
               <Link to={`/videos/${props.video._id}/edit`}>
                 <IconButton aria-label="Edit Video">
