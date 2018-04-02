@@ -53,8 +53,6 @@ export const addVideo = (
     case SET_PHOTO:
       return merge(state, { photo: action.payload })
     case ADD_CHIP:
-      console.log('ACTION.PAYLOAD.TITLE', action.payload.title)
-      console.log('STATE.TAGS', state.tags)
       return assoc(
         'tags',
         map(

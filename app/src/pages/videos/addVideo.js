@@ -75,7 +75,7 @@ const AddVideo = props => {
           variant="flat"
           component="span"
           color="primary"
-          onClick={props.onSubmit(props.history, props.video)}
+          // onClick={props.onSubmit(props.history, props.video)}
         >
           Submit
         </Button>
@@ -114,14 +114,12 @@ const mapActionsToProps = dispatch => {
   }
   return {
     onChange: (field, value) => dispatch(changeVideo(field, value)),
-    onSubmit: (history, video) => e => {
-      e.preventDefault()
-      // video.tags = split(' ', video.tags)
-      dispatch(addVideo(video, history))
-    },
+    // onSubmit: (history, video) => e => {
+    //   e.preventDefault()
+    //   // video.tags = split(' ', video.tags)
+    //   dispatch(addVideo(video, history))
+    // },
     handleClick: (category, chip) => {
-      console.log('CATEGORY', category)
-      console.log('CHIP', chip)
       return dispatch({
         type: ADD_CHIP,
         payload: { title: category, chip: chip }
