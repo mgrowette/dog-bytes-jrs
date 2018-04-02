@@ -17,88 +17,119 @@ import {
   flatten,
   reduce,
   concat,
-  props
+  props,
+  filter
 } from 'ramda'
 import { SET_PHOTO } from '../../constants'
-import ChipComponent from '../../components/ChipComponent'
 import List, { ListItem } from 'material-ui/List'
 import Chip from 'material-ui/Chip'
+import { ChipGroup } from '../../components/ChipGroup'
 
-const AddVideo = props1 => {
-  console.log('PROPS1:', props1)
-  console.log('PROPS1.VIDEOS:', props1.videos)
-  console.log('PROPS1.VIDEO', props1.video)
-  console.log('PROPS1', props1)
+const AddVideo = props => {
+  const videoTags = compose(uniq, flatten, map(video => video.tags))(
+    props.videos
+  )
+
+  console.log('videoTags:', videoTags)
+  // const contentTags = compose(
+  //   map(tag => (
+  //     <ListItem id={tag}>
+  //       <Chip label={tag} onClick={props.handleClick} />
+  //     </ListItem>
+  //   )),
+  //   uniq,
+  //   flatten,
+  //   map(tag => tag.chips),
+  //   filter(tag => tag.title === 'Content')
+  // )(videoTags)
+
+  // const stackTags = compose(
+  //   map(tag => (
+  //     <ListItem id={tag}>
+  //       <Chip label={tag} onClick={props.handleClick} />
+  //     </ListItem>
+  //   )),
+  //   uniq,
+  //   flatten,
+  //   map(tag => tag.chips),
+  //   filter(tag => tag.title === 'Stack')
+  // )(videoTags)
+  //
+  // const difficultyTags = compose(
+  //   map(tag => (
+  //     <ListItem id={tag}>
+  //       <Chip label={tag} onClick={props.handleClick} />
+  //     </ListItem>
+  //   )),
+  //   uniq,
+  //   flatten,
+  //   map(tag => tag.chips),
+  //   filter(tag => tag.title === 'Difficulty')
+  // )(videoTags)
 
   return (
     <div>
-      <MenuAppBar title="Add a Video" {...props1} />
+      <MenuAppBar title="Add a Video" {...props} />
       <form>
         <FormControl noValidate autoComplete="off">
           <TextField
             id="name"
             label="Video Name"
             margin="normal"
-            value={props1.video.name}
-            onChange={e => props1.onChange('name', e.target.value)}
+            value={props.video.name}
+            onChange={e => props.onChange('name', e.target.value)}
           />
           <TextField
             id="instructor"
             label="Video Instructor"
             margin="normal"
-            value={props1.video.instructor}
-            onChange={e => props1.onChange('instructor', e.target.value)}
+            value={props.video.instructor}
+            onChange={e => props.onChange('instructor', e.target.value)}
           />
           <TextField
             id="desc"
             label="Video Description"
             margin="normal"
-            value={props1.video.desc}
-            onChange={e => props1.onChange('desc', e.target.value)}
+            value={props.video.desc}
+            onChange={e => props.onChange('desc', e.target.value)}
           />
           <TextField
             id="youTubeVideoURL"
             label="Youtube Video URL"
             margin="normal"
-            value={props1.video.youTubeVideoURL}
-            onChange={e => props1.onChange('youTubeVideoURL', e.target.value)}
+            value={props.video.youTubeVideoURL}
+            onChange={e => props.onChange('youTubeVideoURL', e.target.value)}
           />
           <List>
-            {map(tag => (
-              <ListItem id={tag}>
-                <Chip label={tag} onClick={props1.handleClick} />
-              </ListItem>
-            ))(
-              compose(
-                uniq,
-                flatten,
-                reduce(
-                  (acc, video) =>
-                    concat(
-                      props(['difficulty', 'content', 'stack'], video.tags),
-                      acc
-                    ),
-                  []
-                )
-              )(props1.videos)
-            )}
+            <ChipGroup
+              data={videoTags}
+              click={props.handleClick}
+              category="Content"
+            />
+          </List>
+          <List>
+            <ChipGroup
+              data={videoTags}
+              click={props.handleClick}
+              category="Difficulty"
+            />
           </List>
         </FormControl>
         <Button
           variant="flat"
           component="span"
           color="primary"
-          onClick={props1.onSubmit(props1.history, props1.video)}
+          // onClick={props.onSubmit(props.history, props.video)}
         >
           Submit
         </Button>
-        <Button onClick={props1.cancel(props1.history)}>Cancel</Button>
+        <Button onClick={props.cancel(props.history)}>Cancel</Button>
         <div>
-          <FileInput onChange={props1.handlePhoto}>
+          <FileInput onChange={props.handlePhoto}>
             <img
               src={
-                props1.video.photo
-                  ? props1.video.photo
+                props.video.photo
+                  ? props.video.photo
                   : "https://placehold.it/64x64?text='photo'"
               }
             />
@@ -125,11 +156,11 @@ const mapActionsToProps = dispatch => {
   }
   return {
     onChange: (field, value) => dispatch(changeVideo(field, value)),
-    onSubmit: (history, video) => e => {
-      e.preventDefault()
-      video.tags = split(' ', video.tags)
-      dispatch(addVideo(video, history))
-    },
+    // onSubmit: (history, video) => e => {
+    //   e.preventDefault()
+    //   video.tags = split(' ', video.tags)
+    //   dispatch(addVideo(video, history))
+    // },
     cancel: history => e => {
       dispatch(cancel(history))
     },
@@ -144,3 +175,11 @@ const mapActionsToProps = dispatch => {
 const connector = connect(mapStateToProps, mapActionsToProps)
 
 export default connector(AddVideo)
+
+// <List>
+//   {map(tag => (
+//     <ListItem id={tag}>
+//       <Chip label={tag} onClick={props.handleClick} />
+//     </ListItem>
+//   ))(compose(uniq, flatten, map(video => video.tags))(props.videos))}
+// </List>

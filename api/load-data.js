@@ -15,11 +15,14 @@ db
       instructorPicData: null,
       duration: '3:03:00',
       youTubeVideoURL: 'https://youtu.be/hopxHpzzw10',
-      tags: {
-        difficulty: ['Beginner'],
-        stack: ['API'],
-        content: ['Map', 'Ramda', 'Reduce', 'Filter', 'Objects', 'Arrays']
-      },
+      tags: [
+        { title: 'Difficulty', chips: ['Beginner'] },
+        { title: 'Stack', chips: ['API'] },
+        {
+          title: 'Content',
+          chips: ['Map', 'Ramda', 'Reduce', 'Filter', 'Objects', 'Arrays']
+        }
+      ],
       date: '01/19/2018'
     },
     {
@@ -32,11 +35,14 @@ db
       instructorPicData: null,
       duration: '0:49:46',
       youTubeVideoURL: 'https://youtu.be/1u1WsblQ6fc',
-      tags: {
-        difficulty: ['Advanced'],
-        stack: ['UI'],
-        content: ['Material UI', 'State', 'Form Validation', 'Redux', 'React']
-      },
+      tags: [
+        { title: 'Difficulty', chips: ['Advanced'] },
+        { title: 'Stack', chips: ['UI'] },
+        {
+          title: 'Content',
+          chips: ['Material UI', 'State', 'Form Validation', 'Redux', 'React']
+        }
+      ],
       date: '03/22/2018'
     },
     {
@@ -49,11 +55,14 @@ db
       instructorPicData: null,
       duration: null,
       youTubeVideoURL: 'https://www.youtube.com/watch?v=XTO_zNnzSs0',
-      tags: {
-        difficulty: ['Intermediate'],
-        stack: ['API'],
-        content: ['Ramda', 'MySql', 'SQL', 'Queries', 'Tables']
-      },
+      tags: [
+        { title: 'Difficulty', chips: ['Intermediate'] },
+        { title: 'Stack', chips: ['API'] },
+        {
+          title: 'Content',
+          chips: ['Ramda', 'MySql', 'SQL', 'Queries', 'Tables']
+        }
+      ],
       date: null
     }
   ])

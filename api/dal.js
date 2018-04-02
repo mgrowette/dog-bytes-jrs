@@ -13,12 +13,15 @@ const getVideos = options => allDocs(options || { include_docs: true })
 const getVideo = id => getDoc(id)
 
 const addVideo = doc => {
-  const tags = doc.tags
-  const difficultyTags = join(' ', tags.difficulty)
-  const stackTags = join(' ', tags.stack)
-  const contentTags = join(' ', tags.content)
-  const tagList = `${difficultyTags} ${stackTags} ${contentTags}`
-  const docId = `${doc.name} ${tagList}`
+  const videoTags = compose(
+    join(' '),
+    flatten,
+    map(tag => tag.chips),
+    uniq,
+    flatten,
+    map(video => video.tags)
+  )(doc)
+  const docId = `${doc.name} ${videoTags}`
   doc.type = 'video'
   doc._id = `${toLower(doc.type)}_${slugify(docId, { lower: true })}`
   return addDoc(doc)
