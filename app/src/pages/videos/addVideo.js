@@ -4,7 +4,7 @@ import TextField from 'material-ui/TextField'
 import { connect } from 'react-redux'
 import MenuAppBar from '../../components/MenuAppBar'
 import Button from 'material-ui/Button'
-import { changeVideo, cancel } from '../../action-creators/videos'
+import { changeVideo, cancel, addVideo } from '../../action-creators/videos'
 import FileInput from '../../components/FileInput'
 import { compose, path, head, map, uniq, flatten, contains } from 'ramda'
 import { SET_PHOTO, ADD_CHIP, DELETE_CHIP } from '../../constants'
@@ -81,7 +81,7 @@ const AddVideo = props => {
           variant="flat"
           component="span"
           color="primary"
-          // onClick={props.onSubmit(props.history, props.video)}
+          onClick={props.onSubmit(props.history, props.video)}
         >
           Submit
         </Button>
@@ -120,11 +120,10 @@ const mapActionsToProps = dispatch => {
   }
   return {
     onChange: (field, value) => dispatch(changeVideo(field, value)),
-    // onSubmit: (history, video) => e => {
-    //   e.preventDefault()
-    //   // video.tags = split(' ', video.tags)
-    //   dispatch(addVideo(video, history))
-    // },
+    onSubmit: (history, video) => e => {
+      e.preventDefault()
+      dispatch(addVideo(video, history))
+    },
     handleClick: (category, chip) => {
       dispatch({
         type: ADD_CHIP,
