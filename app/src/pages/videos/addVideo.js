@@ -16,6 +16,7 @@ import {
 import List from 'material-ui/List'
 import { ChipGroup } from '../../components/ChipGroup'
 import Typography from 'material-ui/Typography'
+import MenuItem from 'material-ui/Menu/MenuItem'
 
 const AddVideo = props => {
   const videoTags = compose(uniq, flatten, map(video => video.tags))(
@@ -92,12 +93,20 @@ const AddVideo = props => {
           ) : (
             <div>
               <div>
-                <TextField
-                  id="newTagCategory"
-                  label="Category"
-                  margin="normal"
-                  helperText="Is this a Content or Stack tag?"
-                />
+                <div>
+                  <TextField
+                    id="selectCategory"
+                    label="Category"
+                    margin="normal"
+                    helperText="What category of tag would you like to add?"
+                    select
+                    value={['Content', 'Stack']}
+                  >
+                    {map(option => (
+                      <MenuItem value={option}>{option}</MenuItem>
+                    ))(['Content', 'Stack'])}
+                  </TextField>
+                </div>
                 <TextField
                   id="newTagChip"
                   label="New Tag"
