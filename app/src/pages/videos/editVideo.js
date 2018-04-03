@@ -10,12 +10,13 @@ import Dialog, {
   DialogContentText,
   DialogTitle
 } from 'material-ui/Dialog'
-import { compose, uniq, flatten, map } from 'ramda'
+import { compose, uniq, flatten, map, isEmpty } from 'ramda'
 import {
   editVideoField,
   editVideo,
   cancelEdit,
-  deleteVideo
+  deleteVideo,
+  getVideo
 } from '../../action-creators/videos'
 import {
   TOGGLE_DELETE,
@@ -29,6 +30,12 @@ const EditVideo = props => {
   const videoTags = compose(uniq, flatten, map(video => video.tags))(
     props.videos
   )
+  const id = props.match.params.id
+  if (isEmpty(props.video)) {
+    return (
+      <Button onClick={props.retry(props.history, id)}>Refresh Data</Button>
+    )
+  }
   return (
     <div>
       <MenuAppBar title="Edit Video" showBackArrow={true} {...props} />
@@ -152,6 +159,10 @@ const mapActionsToProps = dispatch => {
         type: EDIT_FORM_DELETE_CHIP,
         payload: { title: category, chip: chip }
       })
+    },
+    retry: (history, id) => e => {
+      dispatch(getVideo(id))
+      // history.push(`/videos/${id}`)
     }
   }
 }

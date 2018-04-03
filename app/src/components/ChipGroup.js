@@ -11,8 +11,8 @@ export const ChipGroup = props => {
         {compose(
           map(chip => (
             <Chip
+              key={chip}
               label={chip}
-              id={chip}
               onClick={e => props.click(props.category, chip)}
               category={props.category}
               data={props.data}

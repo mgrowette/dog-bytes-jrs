@@ -15,8 +15,10 @@ import FavoriteIcon from 'material-ui-icons/Favorite'
 import ShareIcon from 'material-ui-icons/Share'
 import EditIcon from 'material-ui-icons/Edit'
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore'
+import Divider from 'material-ui/Divider'
 // import MoreVertIcon from 'material-ui-icons/MoreVert'
 import classnames from 'classnames'
+import { join, flatten, map, propOr, isNil } from 'ramda'
 
 const styles = theme => ({
   card: {
@@ -67,11 +69,13 @@ class Video extends React.Component {
         <Card className={classes.card}>
           <CardHeader
             avatar={
-              <img
-                alt="screenshot of video"
-                src={props.video.photo}
-                imgProps={classes.image}
-              />
+              isNil(props.video.photo) ? null : (
+                <img
+                  alt="screenshot of video"
+                  src={props.video.photo}
+                  imgProps={classes.image}
+                />
+              )
             }
             action={
               <Link to={`/videos/${props.video._id}/edit`}>
@@ -87,7 +91,10 @@ class Video extends React.Component {
             <Typography component="p">{props.video.desc}</Typography>
           </CardContent>
           <CardActions className={classes.actions} disableActionSpacing>
-            <IconButton aria-label="Add to favorites">
+            <IconButton
+              onClick={e => console.log('you clicked the favorite button')}
+              aria-label="Add to favorites"
+            >
               <FavoriteIcon />
             </IconButton>
             <IconButton aria-label="Share">
@@ -111,10 +118,17 @@ class Video extends React.Component {
           >
             <CardContent>
               <Typography paragraph variant="body2">
-                More Info:
+                Video Tags:
               </Typography>
-              <Typography paragraph>Placeholder text.....</Typography>
-              <Typography paragraph>More placeholder text.....</Typography>
+              <Typography paragraph>
+                {join(
+                  ', ',
+                  flatten(
+                    map(tag => tag.chips)(propOr([], ['tags'], props.video))
+                  )
+                )}
+              </Typography>
+              <Divider />
               <Typography paragraph>More placeholder text....</Typography>
               <Typography>
                 After consumption of this video, do not swim for at least 30

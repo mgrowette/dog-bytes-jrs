@@ -10,7 +10,8 @@ import {
   ADD_CHIP,
   DELETE_CHIP,
   EDIT_FORM_DELETE_CHIP,
-  EDIT_FORM_ADD_CHIP
+  EDIT_FORM_ADD_CHIP,
+  TOGGLE_ADD_CHIP
 } from '../constants'
 import { merge, not, map, uniq, concat, assoc, reject } from 'ramda'
 
@@ -120,6 +121,15 @@ export const toggleExpanded = (state = false, action) => {
   switch (action.type) {
     case TOGGLE_EXPANDED:
       return merge(state, { toggleExpanded: not(state.toggleExpanded) })
+    default:
+      return state
+  }
+}
+
+export const toggleAddChip = (state = { toggleAddChip: false }, action) => {
+  switch (action.type) {
+    case TOGGLE_ADD_CHIP:
+      return merge(state, { toggleAddChip: not(state.toggleAddChip) })
     default:
       return state
   }

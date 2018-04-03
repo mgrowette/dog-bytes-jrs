@@ -7,9 +7,15 @@ import Button from 'material-ui/Button'
 import { changeVideo, cancel, addVideo } from '../../action-creators/videos'
 import FileInput from '../../components/FileInput'
 import { compose, path, head, map, uniq, flatten } from 'ramda'
-import { SET_PHOTO, ADD_CHIP, DELETE_CHIP } from '../../constants'
+import {
+  SET_PHOTO,
+  ADD_CHIP,
+  DELETE_CHIP,
+  TOGGLE_ADD_CHIP
+} from '../../constants'
 import List from 'material-ui/List'
 import { ChipGroup } from '../../components/ChipGroup'
+import Typography from 'material-ui/Typography'
 
 const AddVideo = props => {
   const videoTags = compose(uniq, flatten, map(video => video.tags))(
@@ -76,6 +82,35 @@ const AddVideo = props => {
               onDelete={props.handleDelete}
             />
           </List>
+          <Typography paragraph variant="body2">
+            {`Don't see a tag you want? Add it below!`}
+          </Typography>
+          {props.addChip.toggleAddChip === false ? (
+            <div>
+              <Button onClick={props.toggleAddChip}>Add a Tag</Button>
+            </div>
+          ) : (
+            <div>
+              <div>
+                <TextField
+                  id="newTagCategory"
+                  label="Category"
+                  margin="normal"
+                  helperText="Is this a Content or Stack tag?"
+                />
+                <TextField
+                  id="newTagChip"
+                  label="New Tag"
+                  margin="normal"
+                  helperText="What tag would you like to add?"
+                />
+              </div>
+              <div>
+                <Button onClick={props.toggleAddChip}>Add New Tag</Button>
+                <Button onClick={props.toggleAddChip}>Never Mind</Button>
+              </div>
+            </div>
+          )}
         </FormControl>
         <Button
           variant="flat"
@@ -85,7 +120,9 @@ const AddVideo = props => {
         >
           Submit
         </Button>
-        <Button onClick={props.cancel(props.history)}>Cancel</Button>
+        <Button color="secondary" onClick={props.cancel(props.history)}>
+          Cancel
+        </Button>
         <div>
           <FileInput onChange={props.handlePhoto}>
             <img
@@ -107,10 +144,10 @@ const AddVideo = props => {
 }
 
 const mapStateToProps = state => {
-  console.log('STATE.ADDVIDEO', state.addVideo)
   return {
     videos: state.videos,
-    video: state.addVideo
+    video: state.addVideo,
+    addChip: state.toggleAddChip
   }
 }
 
@@ -142,7 +179,8 @@ const mapActionsToProps = dispatch => {
     handlePhoto: (e, results) => {
       const blob = compose(path(['target', 'result']), head, head)(results)
       doDispatch('PHOTO', blob)
-    }
+    },
+    toggleAddChip: () => dispatch({ type: TOGGLE_ADD_CHIP })
   }
 }
 
