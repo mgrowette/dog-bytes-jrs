@@ -17,7 +17,11 @@ import {
   cancelEdit,
   deleteVideo
 } from '../../action-creators/videos'
-import { TOGGLE_DELETE } from '../../constants'
+import {
+  TOGGLE_DELETE,
+  EDIT_FORM_ADD_CHIP,
+  EDIT_FORM_DELETE_CHIP
+} from '../../constants'
 import { ChipGroup } from '../../components/ChipGroup'
 import List from 'material-ui/List'
 
@@ -136,7 +140,19 @@ const mapActionsToProps = dispatch => {
     },
     cancel: (history, video) => e => dispatch(cancelEdit(history, video)),
     toggleDelete: () => dispatch({ type: TOGGLE_DELETE }),
-    deleteVideo: (id, history) => dispatch(deleteVideo(id, history))
+    deleteVideo: (id, history) => dispatch(deleteVideo(id, history)),
+    handleClick: (category, chip) => {
+      dispatch({
+        type: EDIT_FORM_ADD_CHIP,
+        payload: { title: category, chip: chip }
+      })
+    },
+    handleDelete: (category, chip) => {
+      dispatch({
+        type: EDIT_FORM_DELETE_CHIP,
+        payload: { title: category, chip: chip }
+      })
+    }
   }
 }
 
