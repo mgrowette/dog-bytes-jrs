@@ -17,7 +17,6 @@ const addVideo = doc => {
   const docId = `${doc.name} ${videoTags}`
   doc.type = 'video'
   doc._id = `${toLower(doc.type)}_${slugify(docId, { lower: true })}`
-  // ${slugify(docId, { lower: true })}
   return addDoc(doc)
 }
 

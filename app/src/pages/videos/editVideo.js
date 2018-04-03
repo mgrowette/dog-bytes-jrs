@@ -10,7 +10,7 @@ import Dialog, {
   DialogContentText,
   DialogTitle
 } from 'material-ui/Dialog'
-import { join } from 'ramda'
+import { compose, uniq, flatten, map } from 'ramda'
 import {
   editVideoField,
   editVideo,
@@ -18,8 +18,13 @@ import {
   deleteVideo
 } from '../../action-creators/videos'
 import { TOGGLE_DELETE } from '../../constants'
+import { ChipGroup } from '../../components/ChipGroup'
+import List from 'material-ui/List'
 
 const EditVideo = props => {
+  const videoTags = compose(uniq, flatten, map(video => video.tags))(
+    props.videos
+  )
   return (
     <div>
       <MenuAppBar title="Edit Video" showBackArrow={true} {...props} />
@@ -46,13 +51,33 @@ const EditVideo = props => {
             value={props.video.youTubeVideoURL}
             onChange={e => props.onChange('url', e.target.value)}
           />
-          <TextField
-            id="tags"
-            label="Video Content Tags"
-            margin="normal"
-            value={join(' ', props.video.tags)}
-            onChange={e => props.onChange('tags', e.target.value)}
-          />
+          <List>
+            <ChipGroup
+              data={videoTags}
+              click={props.handleClick}
+              category="Content"
+              video={props.video}
+              onDelete={props.handleDelete}
+            />
+          </List>
+          <List>
+            <ChipGroup
+              data={videoTags}
+              click={props.handleClick}
+              category="Difficulty"
+              video={props.video}
+              onDelete={props.handleDelete}
+            />
+          </List>
+          <List>
+            <ChipGroup
+              data={videoTags}
+              click={props.handleClick}
+              category="Stack"
+              video={props.video}
+              onDelete={props.handleDelete}
+            />
+          </List>
         </FormControl>
         <Button onClick={props.onSubmit(props.history, props.video)}>
           Submit
@@ -95,7 +120,11 @@ const EditVideo = props => {
 }
 
 const mapStateToProps = state => {
-  return { video: state.video }
+  console.log('STATE.VIDEO:', state.video)
+  return {
+    video: state.video,
+    videos: state.videos
+  }
 }
 
 const mapActionsToProps = dispatch => {
