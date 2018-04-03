@@ -4,12 +4,18 @@ import TextField from 'material-ui/TextField'
 import { connect } from 'react-redux'
 import MenuAppBar from '../../components/MenuAppBar'
 import Button from 'material-ui/Button'
-import { changeVideo, addVideo, cancel } from '../../action-creators/videos'
+import { changeVideo, cancel, addVideo } from '../../action-creators/videos'
 import FileInput from '../../components/FileInput'
-import { split, compose, path, head, toUpper } from 'ramda'
-import { SET_PHOTO } from '../../constants'
+import { compose, path, head, map, uniq, flatten, contains } from 'ramda'
+import { SET_PHOTO, ADD_CHIP, DELETE_CHIP } from '../../constants'
+import List from 'material-ui/List'
+import { ChipGroup } from '../../components/ChipGroup'
 
 const AddVideo = props => {
+  const videoTags = compose(uniq, flatten, map(video => video.tags))(
+    props.videos
+  )
+
   return (
     <div>
       <MenuAppBar title="Add a Video" {...props} />
@@ -43,14 +49,33 @@ const AddVideo = props => {
             value={props.video.youTubeVideoURL}
             onChange={e => props.onChange('youTubeVideoURL', e.target.value)}
           />
-          <TextField
-            id="tags"
-            label="Video Content Tags"
-            margin="normal"
-            value={props.video.tags}
-            helperText="Enter videos tags separated by spaces"
-            onChange={e => props.onChange('tags', e.target.value)}
-          />
+          <List>
+            <ChipGroup
+              data={videoTags}
+              click={props.handleClick}
+              category="Content"
+              video={props.video}
+              onDelete={props.handleDelete}
+            />
+          </List>
+          <List>
+            <ChipGroup
+              data={videoTags}
+              click={props.handleClick}
+              category="Difficulty"
+              video={props.video}
+              onDelete={props.handleDelete}
+            />
+          </List>
+          <List>
+            <ChipGroup
+              data={videoTags}
+              click={props.handleClick}
+              category="Stack"
+              video={props.video}
+              onDelete={props.handleDelete}
+            />
+          </List>
         </FormControl>
         <Button
           variant="flat"
@@ -64,6 +89,7 @@ const AddVideo = props => {
         <div>
           <FileInput onChange={props.handlePhoto}>
             <img
+              alt="video screenshot"
               src={
                 props.video.photo
                   ? props.video.photo
@@ -81,7 +107,9 @@ const AddVideo = props => {
 }
 
 const mapStateToProps = state => {
+  console.log('STATE.ADDVIDEO', state.addVideo)
   return {
+    videos: state.videos,
     video: state.addVideo
   }
 }
@@ -94,8 +122,19 @@ const mapActionsToProps = dispatch => {
     onChange: (field, value) => dispatch(changeVideo(field, value)),
     onSubmit: (history, video) => e => {
       e.preventDefault()
-      video.tags = split(' ', video.tags)
       dispatch(addVideo(video, history))
+    },
+    handleClick: (category, chip) => {
+      dispatch({
+        type: ADD_CHIP,
+        payload: { title: category, chip: chip }
+      })
+    },
+    handleDelete: (category, chip) => {
+      dispatch({
+        type: DELETE_CHIP,
+        payload: { title: category, chip: chip }
+      })
     },
     cancel: history => e => {
       dispatch(cancel(history))

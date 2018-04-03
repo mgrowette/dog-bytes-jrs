@@ -20,7 +20,6 @@ export const getVideo = id => async (dispatch, getState) => {
 }
 
 export const addVideo = (video, history) => async (dispatch, getState) => {
-  console.log('ADD VIDEO ACTION CREATOR, VIDEO:', video)
   const method = 'POST'
   const headers = { 'Content-Type': 'application/json' }
   const body = JSON.stringify(video)
@@ -56,6 +55,10 @@ export const deleteVideo = (id, history) => async (dispatch, getState) => {
 export const changeVideo = (field, value) => (dispatch, getState) => {
   dispatch({ type: CHANGE_VIDEO_CHARACTER, payload: { [field]: value } })
 }
+
+// export const clickChip = (category, chip) => (dispatch, getState) => {
+//   dispatch()
+// }
 
 export const cancel = history => (dispatch, getState) => {
   dispatch({ type: RESET_ADD_VIDEO_FORM })

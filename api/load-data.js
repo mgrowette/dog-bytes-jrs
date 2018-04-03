@@ -15,7 +15,14 @@ db
       instructorPicData: null,
       duration: '3:03:00',
       youTubeVideoURL: 'https://youtu.be/hopxHpzzw10',
-      tags: ['ramda', 'map', 'filter', 'reduce', 'easy', 'review'],
+      tags: [
+        { title: 'Difficulty', chips: ['Beginner'] },
+        { title: 'Stack', chips: ['API'] },
+        {
+          title: 'Content',
+          chips: ['Map', 'Ramda', 'Reduce', 'Filter', 'Objects', 'Arrays']
+        }
+      ],
       date: '01/19/2018'
     },
     {
@@ -28,7 +35,14 @@ db
       instructorPicData: null,
       duration: '0:49:46',
       youTubeVideoURL: 'https://youtu.be/1u1WsblQ6fc',
-      tags: ['material ui', 'form', 'state', 'react', 'redux', 'difficult'],
+      tags: [
+        { title: 'Difficulty', chips: ['Advanced'] },
+        { title: 'Stack', chips: ['UI'] },
+        {
+          title: 'Content',
+          chips: ['Material UI', 'State', 'Form Validation', 'Redux', 'React']
+        }
+      ],
       date: '03/22/2018'
     },
     {
@@ -41,7 +55,14 @@ db
       instructorPicData: null,
       duration: null,
       youTubeVideoURL: 'https://www.youtube.com/watch?v=XTO_zNnzSs0',
-      tags: [null],
+      tags: [
+        { title: 'Difficulty', chips: ['Intermediate'] },
+        { title: 'Stack', chips: ['API'] },
+        {
+          title: 'Content',
+          chips: ['Ramda', 'MySql', 'SQL', 'Queries', 'Tables']
+        }
+      ],
       date: null
     }
   ])

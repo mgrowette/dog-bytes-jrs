@@ -6,9 +6,11 @@ import {
   TOGGLE_EXPANDED,
   EDIT_FIELD_FORM,
   TOGGLE_DELETE,
-  SET_PHOTO
+  SET_PHOTO,
+  ADD_CHIP,
+  DELETE_CHIP
 } from '../constants'
-import { merge, not } from 'ramda'
+import { merge, not, map, uniq, concat, assoc, reject } from 'ramda'
 
 export const videos = (state = [], action) => {
   switch (action.type) {
@@ -32,13 +34,52 @@ export const video = (state = {}, action) => {
   }
 }
 
-export const addVideo = (state = {}, action) => {
+export const addVideo = (
+  state = {
+    name: '',
+    instructor: '',
+    tags: [
+      { title: 'Difficulty', chips: [] },
+      { title: 'Stack', chips: [] },
+      { title: 'Content', chips: [] }
+    ],
+    desc: '',
+    youTubeVideoURL: ''
+  },
+  action
+) => {
   switch (action.type) {
     case CHANGE_VIDEO_CHARACTER:
       return merge(state, action.payload)
     case SET_PHOTO:
-      console.log('SET_PHOTO CALLED')
       return merge(state, { photo: action.payload })
+    case ADD_CHIP:
+      return assoc(
+        'tags',
+        map(
+          t =>
+            t.title === action.payload.title
+              ? merge(t, {
+                  chips: uniq(concat([action.payload.chip], t.chips))
+                })
+              : t,
+          state.tags
+        ),
+        state
+      )
+    case DELETE_CHIP:
+      return assoc(
+        'tags',
+        map(
+          tag =>
+            tag.title === action.payload.title
+              ? merge(tag, {
+                  chips: reject(chip => chip === action.payload.chip, tag.chips)
+                })
+              : tag
+        )(state.tags),
+        state
+      )
     case RESET_ADD_VIDEO_FORM:
       return {}
     default:
