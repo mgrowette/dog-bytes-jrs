@@ -6,7 +6,7 @@ import MenuAppBar from '../../components/MenuAppBar'
 import Button from 'material-ui/Button'
 import { changeVideo, cancel, addVideo } from '../../action-creators/videos'
 import FileInput from '../../components/FileInput'
-import { compose, path, head, map, uniq, flatten, contains } from 'ramda'
+import { compose, path, head, map, uniq, flatten } from 'ramda'
 import { SET_PHOTO, ADD_CHIP, DELETE_CHIP } from '../../constants'
 import List from 'material-ui/List'
 import { ChipGroup } from '../../components/ChipGroup'
@@ -18,7 +18,7 @@ const AddVideo = props => {
 
   return (
     <div>
-      <MenuAppBar title="Add a Video" {...props} />
+      <MenuAppBar title="Add a Video" {...props} showBackArrow={true} />
       <form>
         <FormControl noValidate autoComplete="off">
           <TextField
