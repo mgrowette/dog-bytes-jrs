@@ -4,10 +4,10 @@ import TextField from 'material-ui/TextField'
 import { connect } from 'react-redux'
 import MenuAppBar from '../../components/MenuAppBar'
 import Button from 'material-ui/Button'
-import { changeVideo, addVideo, cancel } from '../../action-creators/videos'
+import { changeVideo, cancel } from '../../action-creators/videos'
 import FileInput from '../../components/FileInput'
-import { split, compose, path, head, map, uniq, flatten } from 'ramda'
-import { SET_PHOTO, ADD_CHIP } from '../../constants'
+import { compose, path, head, map, uniq, flatten, contains } from 'ramda'
+import { SET_PHOTO, ADD_CHIP, DELETE_CHIP } from '../../constants'
 import List from 'material-ui/List'
 import { ChipGroup } from '../../components/ChipGroup'
 
@@ -54,6 +54,8 @@ const AddVideo = props => {
               data={videoTags}
               click={props.handleClick}
               category="Content"
+              video={props.video}
+              onDelete={props.handleDelete}
             />
           </List>
           <List>
@@ -61,6 +63,8 @@ const AddVideo = props => {
               data={videoTags}
               click={props.handleClick}
               category="Difficulty"
+              video={props.video}
+              onDelete={props.handleDelete}
             />
           </List>
           <List>
@@ -68,6 +72,8 @@ const AddVideo = props => {
               data={videoTags}
               click={props.handleClick}
               category="Stack"
+              video={props.video}
+              onDelete={props.handleDelete}
             />
           </List>
         </FormControl>
@@ -101,7 +107,7 @@ const AddVideo = props => {
 }
 
 const mapStateToProps = state => {
-  console.log('HERES STATE', state.addVideo)
+  console.log('STATE.ADDVIDEO', state.addVideo)
   return {
     videos: state.videos,
     video: state.addVideo
@@ -120,8 +126,14 @@ const mapActionsToProps = dispatch => {
     //   dispatch(addVideo(video, history))
     // },
     handleClick: (category, chip) => {
-      return dispatch({
+      dispatch({
         type: ADD_CHIP,
+        payload: { title: category, chip: chip }
+      })
+    },
+    handleDelete: (category, chip) => {
+      dispatch({
+        type: DELETE_CHIP,
         payload: { title: category, chip: chip }
       })
     },

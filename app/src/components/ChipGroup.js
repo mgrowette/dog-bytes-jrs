@@ -1,5 +1,5 @@
 import React from 'react'
-import { compose, uniq, flatten, map, filter } from 'ramda'
+import { compose, uniq, flatten, map, filter, contains, propOr } from 'ramda'
 import { ListItem } from 'material-ui/List'
 import Chip from 'material-ui/Chip'
 
@@ -16,6 +16,32 @@ export const ChipGroup = props => {
               onClick={e => props.click(props.category, chip)}
               category={props.category}
               data={props.data}
+              style={{
+                background: contains(
+                  chip,
+                  flatten(
+                    map(
+                      category => category.chips,
+                      propOr([], ['tags'], props.video)
+                    )
+                  )
+                )
+                  ? 'white'
+                  : null
+              }}
+              onDelete={
+                contains(
+                  chip,
+                  flatten(
+                    map(
+                      category => category.chips,
+                      propOr([], ['tags'], props.video)
+                    )
+                  )
+                )
+                  ? e => props.onDelete(props.category, chip)
+                  : null
+              }
             />
           )),
           uniq,

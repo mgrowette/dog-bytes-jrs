@@ -7,9 +7,10 @@ import {
   EDIT_FIELD_FORM,
   TOGGLE_DELETE,
   SET_PHOTO,
-  ADD_CHIP
+  ADD_CHIP,
+  DELETE_CHIP
 } from '../constants'
-import { merge, not, map, uniq, concat, assoc, isEmpty } from 'ramda'
+import { merge, not, map, uniq, concat, assoc, reject } from 'ramda'
 
 export const videos = (state = [], action) => {
   switch (action.type) {
@@ -64,6 +65,19 @@ export const addVideo = (
               : t,
           state.tags
         ),
+        state
+      )
+    case DELETE_CHIP:
+      return assoc(
+        'tags',
+        map(
+          tag =>
+            tag.title === action.payload.title
+              ? merge(tag, {
+                  chips: reject(chip => chip === action.payload.chip, tag.chips)
+                })
+              : tag
+        )(state.tags),
         state
       )
     case RESET_ADD_VIDEO_FORM:
