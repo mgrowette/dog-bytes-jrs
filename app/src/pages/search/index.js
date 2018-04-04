@@ -20,7 +20,7 @@ const Search = props => {
       <div>
         <TextField
           id="search"
-          label="Name, Description, or Instructor"
+          label="Name, Instructor, or Description"
           margin="normal"
           value={props.searchCriteria}
           onChange={props.onSearchChange}
@@ -33,8 +33,8 @@ const Search = props => {
               filter(video =>
                 contains(
                   toLower(props.searchCriteria),
-                  toLower(video.name) &&
-                    toLower(video.desc) &&
+                  toLower(video.name) +
+                    toLower(video.desc) +
                     toLower(video.instructor)
                 )
               )
