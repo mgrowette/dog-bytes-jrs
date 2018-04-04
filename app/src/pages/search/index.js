@@ -6,8 +6,9 @@ import { ChipGroup } from '../../components/ChipGroup'
 import List from 'material-ui/List'
 import { compose, uniq, flatten, map } from 'ramda'
 import TextField from 'material-ui/TextField'
-import { CHANGE_SEARCH_TEXT } from '../../constants'
-import { not, isNil, isEmpty, filter, contains, toLower } from 'ramda'
+import { ADD_SEARCH_CHIP, DELETE_SEARCH_CHIP } from '../../constants'
+import { not, isNil, isEmpty, filter, contains, toLower, join } from 'ramda'
+import { searchField } from '../../action-creators/videos'
 
 const Search = props => {
   const videoTags = compose(uniq, flatten, map(video => video.tags))(
@@ -22,21 +23,60 @@ const Search = props => {
           id="search"
           label="Name, Instructor, or Description"
           margin="normal"
-          value={props.searchCriteria}
-          onChange={props.onSearchChange}
+          value={props.searchCriteria.search}
+          onChange={e => props.onSearchChange('search', e.target.value)}
         />
       </div>
       <List>
-        {not(isNil(props.searchCriteria) || isEmpty(props.searchCriteria))
+        <ChipGroup
+          data={videoTags}
+          click={props.handleClick}
+          category="Difficulty"
+          video={props.searchCriteria}
+          onDelete={props.handleDelete}
+        />
+      </List>
+      <List>
+        <ChipGroup
+          data={videoTags}
+          click={props.handleClick}
+          category="Stack"
+          video={props.searchCriteria}
+          onDelete={props.handleDelete}
+        />
+      </List>
+      <List>
+        <ChipGroup
+          data={videoTags}
+          click={props.handleClick}
+          category="Content"
+          video={props.searchCriteria}
+          onDelete={props.handleDelete}
+        />
+      </List>
+      <List>
+        {not(
+          isNil(props.searchCriteria.search) ||
+            isEmpty(props.searchCriteria.search)
+        )
           ? compose(
               map(video => <VideoListItem video={video} key={video.name} />),
-              filter(video =>
-                contains(
-                  toLower(props.searchCriteria),
-                  toLower(video.name) +
-                    toLower(video.desc) +
-                    toLower(video.instructor)
-                )
+              filter(
+                video =>
+                  contains(
+                    toLower(props.searchCriteria.search),
+                    toLower(video.name) +
+                      toLower(video.desc) +
+                      toLower(video.instructor)
+                  ) &&
+                  contains(
+                    compose(join(' '), flatten, map(tag => tag.chips))(
+                      props.searchCriteria.tags
+                    ),
+                    compose(join(' '), flatten, map(tag => tag.chips))(
+                      video.tags
+                    )
+                  )
               )
             )(props.videos)
           : null}
@@ -46,49 +86,32 @@ const Search = props => {
 }
 
 const mapStateToProps = state => {
-  console.log('STATE.SEARCHCRITERIA', state.searchCriteria)
+  console.log('Search State:', state.searchCriteria)
   return {
     videos: state.videos,
-    video: state.video,
     searchCriteria: state.searchCriteria
   }
 }
 
 const mapActionsToProps = dispatch => {
   return {
-    onSearchChange: e =>
-      dispatch({ type: CHANGE_SEARCH_TEXT, payload: e.target.value })
+    onSearchChange: (field, value) => dispatch(searchField(field, value)),
+
+    handleClick: (category, chip) => {
+      dispatch({
+        type: ADD_SEARCH_CHIP,
+        payload: { title: category, chip: chip }
+      })
+    },
+    handleDelete: (category, chip) => {
+      dispatch({
+        type: DELETE_SEARCH_CHIP,
+        payload: { title: category, chip: chip }
+      })
+    }
   }
 }
 
 const connector = connect(mapStateToProps, mapActionsToProps)
 
 export default connector(Search)
-
-// <List>
-//   <ChipGroup
-//     data={videoTags}
-//     click={props.handleClick}
-//     category="Difficulty"
-//     video={props.video}
-//     onDelete={props.handleDelete}
-//   />
-// </List>
-// <List>
-//   <ChipGroup
-//     data={videoTags}
-//     click={props.handleClick}
-//     category="Stack"
-//     video={props.video}
-//     onDelete={props.handleDelete}
-//   />
-// </List>
-// <List>
-//   <ChipGroup
-//     data={videoTags}
-//     click={props.handleClick}
-//     category="Content"
-//     video={props.video}
-//     onDelete={props.handleDelete}
-//   />
-// </List>

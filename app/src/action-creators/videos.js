@@ -4,7 +4,8 @@ import {
   GET_VIDEO,
   CHANGE_VIDEO_CHARACTER,
   RESET_ADD_VIDEO_FORM,
-  EDIT_FIELD_FORM
+  EDIT_FIELD_FORM,
+  CHANGE_SEARCH_TEXT
 } from '../constants'
 
 const url = 'http://localhost:5000'
@@ -71,4 +72,8 @@ export const cancelEdit = (history, video) => (dispatch, getState) => {
 
 export const editVideoField = (field, value) => (dispatch, getState) => {
   dispatch({ type: EDIT_FIELD_FORM, payload: { [field]: value } })
+}
+
+export const searchField = (field, value) => (dispatch, getState) => {
+  dispatch({ type: CHANGE_SEARCH_TEXT, payload: { [field]: value } })
 }
