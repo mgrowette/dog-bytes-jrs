@@ -6,6 +6,7 @@ import {
   toggleExpanded,
   toggleAddChip
 } from './reducers/videos'
+import { searchCriteria } from './reducers/search'
 import thunk from 'redux-thunk'
 
 const store = createStore(
@@ -14,7 +15,8 @@ const store = createStore(
     video,
     addVideo,
     toggleExpanded,
-    toggleAddChip
+    toggleAddChip,
+    searchCriteria
   }),
   applyMiddleware(thunk)
 )
