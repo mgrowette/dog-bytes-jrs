@@ -15,8 +15,9 @@ import {
 } from '../../constants'
 import List from 'material-ui/List'
 import { ChipGroup } from '../../components/ChipGroup'
-import Typography from 'material-ui/Typography'
-import MenuItem from 'material-ui/Menu/MenuItem'
+// import Typography from 'material-ui/Typography'
+// import MenuItem from 'material-ui/Menu/MenuItem'
+// import Divider from 'material-ui/Divider'
 
 const AddVideo = props => {
   const videoTags = compose(uniq, flatten, map(video => video.tags))(
@@ -60,15 +61,6 @@ const AddVideo = props => {
             <ChipGroup
               data={videoTags}
               click={props.handleClick}
-              category="Content"
-              video={props.video}
-              onDelete={props.handleDelete}
-            />
-          </List>
-          <List>
-            <ChipGroup
-              data={videoTags}
-              click={props.handleClick}
               category="Difficulty"
               video={props.video}
               onDelete={props.handleDelete}
@@ -83,43 +75,15 @@ const AddVideo = props => {
               onDelete={props.handleDelete}
             />
           </List>
-          <Typography paragraph variant="body2">
-            {`Don't see a tag you want? Add it below!`}
-          </Typography>
-          {props.addChip.toggleAddChip === false ? (
-            <div>
-              <Button onClick={props.toggleAddChip}>Add a Tag</Button>
-            </div>
-          ) : (
-            <div>
-              <div>
-                <div>
-                  <TextField
-                    id="selectCategory"
-                    label="Category"
-                    margin="normal"
-                    helperText="What category of tag would you like to add?"
-                    select
-                    value={['Content', 'Stack']}
-                  >
-                    {map(option => (
-                      <MenuItem value={option}>{option}</MenuItem>
-                    ))(['Content', 'Stack'])}
-                  </TextField>
-                </div>
-                <TextField
-                  id="newTagChip"
-                  label="New Tag"
-                  margin="normal"
-                  helperText="What tag would you like to add?"
-                />
-              </div>
-              <div>
-                <Button onClick={props.toggleAddChip}>Add New Tag</Button>
-                <Button onClick={props.toggleAddChip}>Never Mind</Button>
-              </div>
-            </div>
-          )}
+          <List>
+            <ChipGroup
+              data={videoTags}
+              click={props.handleClick}
+              category="Content"
+              video={props.video}
+              onDelete={props.handleDelete}
+            />
+          </List>
         </FormControl>
         <Button
           variant="flat"
@@ -196,3 +160,43 @@ const mapActionsToProps = dispatch => {
 const connector = connect(mapStateToProps, mapActionsToProps)
 
 export default connector(AddVideo)
+
+// <Typography paragraph variant="body2">
+//   {`Don't see a tag you want? Add it below!`}
+// </Typography>
+// {props.addChip.toggleAddChip === false ? (
+//   <div>
+//     <Button onClick={props.toggleAddChip}>Add a Tag</Button>
+//     <Divider />
+//   </div>
+// ) : (
+//   <div>
+//     <div>
+//       <div>
+//         <TextField
+//           id="selectCategory"
+//           label="Category"
+//           margin="normal"
+//           helperText="What category of tag would you like to add?"
+//           select
+//           value={['Content', 'Stack']}
+//         >
+//           {map(option => (
+//             <MenuItem value={option}>{option}</MenuItem>
+//           ))(['Content', 'Stack'])}
+//         </TextField>
+//       </div>
+//       <TextField
+//         id="newTagChip"
+//         label="New Tag"
+//         margin="normal"
+//         helperText="What tag would you like to add?"
+//       />
+//     </div>
+//     <div>
+//       <Button onClick={props.toggleAddChip}>Add New Tag</Button>
+//       <Button onClick={props.toggleAddChip}>Never Mind</Button>
+//       <Divider />
+//     </div>
+//   </div>
+// )}

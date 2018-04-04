@@ -66,15 +66,6 @@ const EditVideo = props => {
             <ChipGroup
               data={videoTags}
               click={props.handleClick}
-              category="Content"
-              video={props.video}
-              onDelete={props.handleDelete}
-            />
-          </List>
-          <List>
-            <ChipGroup
-              data={videoTags}
-              click={props.handleClick}
               category="Difficulty"
               video={props.video}
               onDelete={props.handleDelete}
@@ -85,6 +76,15 @@ const EditVideo = props => {
               data={videoTags}
               click={props.handleClick}
               category="Stack"
+              video={props.video}
+              onDelete={props.handleDelete}
+            />
+          </List>
+          <List>
+            <ChipGroup
+              data={videoTags}
+              click={props.handleClick}
+              category="Content"
               video={props.video}
               onDelete={props.handleDelete}
             />
