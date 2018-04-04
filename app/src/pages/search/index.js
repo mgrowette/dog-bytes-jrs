@@ -7,7 +7,16 @@ import List from 'material-ui/List'
 import { compose, uniq, flatten, map } from 'ramda'
 import TextField from 'material-ui/TextField'
 import { ADD_SEARCH_CHIP, DELETE_SEARCH_CHIP } from '../../constants'
-import { not, isNil, isEmpty, filter, contains, toLower, join } from 'ramda'
+import {
+  not,
+  isNil,
+  isEmpty,
+  filter,
+  contains,
+  toLower,
+  join,
+  propOr
+} from 'ramda'
 import { searchField } from '../../action-creators/videos'
 
 const Search = props => {
@@ -21,7 +30,8 @@ const Search = props => {
       <div>
         <TextField
           id="search"
-          label="Name, Instructor, or Description"
+          label="Search"
+          helperText="Video Name, Instructor, or Description"
           margin="normal"
           value={props.searchCriteria.search}
           onChange={e => props.onSearchChange('search', e.target.value)}
@@ -58,13 +68,14 @@ const Search = props => {
         {not(
           isNil(props.searchCriteria.search) ||
             isEmpty(props.searchCriteria.search)
-        )
+        ) ||
+        not(isEmpty(flatten(map(tag => tag.chips)(props.searchCriteria.tags))))
           ? compose(
               map(video => <VideoListItem video={video} key={video.name} />),
               filter(
                 video =>
                   contains(
-                    toLower(props.searchCriteria.search),
+                    toLower(propOr('', ['search'], props.searchCriteria)),
                     toLower(video.name) +
                       toLower(video.desc) +
                       toLower(video.instructor)
@@ -87,6 +98,7 @@ const Search = props => {
 
 const mapStateToProps = state => {
   console.log('Search State:', state.searchCriteria)
+  console.log('Search state tags:', state.searchCriteria.tags)
   return {
     videos: state.videos,
     searchCriteria: state.searchCriteria
