@@ -8,7 +8,10 @@ import {
   TOGGLE_DELETE,
   SET_PHOTO,
   ADD_CHIP,
-  DELETE_CHIP
+  DELETE_CHIP,
+  EDIT_FORM_DELETE_CHIP,
+  EDIT_FORM_ADD_CHIP,
+  TOGGLE_ADD_CHIP
 } from '../constants'
 import { merge, not, map, uniq, concat, assoc, reject } from 'ramda'
 
@@ -24,11 +27,38 @@ export const videos = (state = [], action) => {
 export const video = (state = {}, action) => {
   switch (action.type) {
     case GET_VIDEO:
-      return action.payload
+      return merge(state, action.payload)
     case EDIT_FIELD_FORM:
       return merge(state, action.payload)
     case TOGGLE_DELETE:
       return merge(state, { toggleDelete: not(state.toggleDelete) })
+    case EDIT_FORM_DELETE_CHIP:
+      return assoc(
+        'tags',
+        map(
+          tag =>
+            tag.title === action.payload.title
+              ? merge(tag, {
+                  chips: reject(chip => chip === action.payload.chip, tag.chips)
+                })
+              : tag
+        )(state.tags),
+        state
+      )
+    case EDIT_FORM_ADD_CHIP:
+      return assoc(
+        'tags',
+        map(
+          t =>
+            t.title === action.payload.title
+              ? merge(t, {
+                  chips: uniq(concat([action.payload.chip], t.chips))
+                })
+              : t,
+          state.tags
+        ),
+        state
+      )
     default:
       return state
   }
@@ -91,6 +121,15 @@ export const toggleExpanded = (state = false, action) => {
   switch (action.type) {
     case TOGGLE_EXPANDED:
       return merge(state, { toggleExpanded: not(state.toggleExpanded) })
+    default:
+      return state
+  }
+}
+
+export const toggleAddChip = (state = { toggleAddChip: false }, action) => {
+  switch (action.type) {
+    case TOGGLE_ADD_CHIP:
+      return merge(state, { toggleAddChip: not(state.toggleAddChip) })
     default:
       return state
   }

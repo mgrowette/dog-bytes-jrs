@@ -10,14 +10,19 @@ import Dialog, {
   DialogContentText,
   DialogTitle
 } from 'material-ui/Dialog'
-import { compose, uniq, flatten, map } from 'ramda'
+import { compose, uniq, flatten, map, isEmpty } from 'ramda'
 import {
   editVideoField,
   editVideo,
   cancelEdit,
-  deleteVideo
+  deleteVideo,
+  getVideo
 } from '../../action-creators/videos'
-import { TOGGLE_DELETE } from '../../constants'
+import {
+  TOGGLE_DELETE,
+  EDIT_FORM_ADD_CHIP,
+  EDIT_FORM_DELETE_CHIP
+} from '../../constants'
 import { ChipGroup } from '../../components/ChipGroup'
 import List from 'material-ui/List'
 
@@ -25,6 +30,12 @@ const EditVideo = props => {
   const videoTags = compose(uniq, flatten, map(video => video.tags))(
     props.videos
   )
+  const id = props.match.params.id
+  if (isEmpty(props.video)) {
+    return (
+      <Button onClick={props.retry(props.history, id)}>Refresh Data</Button>
+    )
+  }
   return (
     <div>
       <MenuAppBar title="Edit Video" showBackArrow={true} {...props} />
@@ -55,15 +66,6 @@ const EditVideo = props => {
             <ChipGroup
               data={videoTags}
               click={props.handleClick}
-              category="Content"
-              video={props.video}
-              onDelete={props.handleDelete}
-            />
-          </List>
-          <List>
-            <ChipGroup
-              data={videoTags}
-              click={props.handleClick}
               category="Difficulty"
               video={props.video}
               onDelete={props.handleDelete}
@@ -74,6 +76,15 @@ const EditVideo = props => {
               data={videoTags}
               click={props.handleClick}
               category="Stack"
+              video={props.video}
+              onDelete={props.handleDelete}
+            />
+          </List>
+          <List>
+            <ChipGroup
+              data={videoTags}
+              click={props.handleClick}
+              category="Content"
               video={props.video}
               onDelete={props.handleDelete}
             />
@@ -136,7 +147,23 @@ const mapActionsToProps = dispatch => {
     },
     cancel: (history, video) => e => dispatch(cancelEdit(history, video)),
     toggleDelete: () => dispatch({ type: TOGGLE_DELETE }),
-    deleteVideo: (id, history) => dispatch(deleteVideo(id, history))
+    deleteVideo: (id, history) => dispatch(deleteVideo(id, history)),
+    handleClick: (category, chip) => {
+      dispatch({
+        type: EDIT_FORM_ADD_CHIP,
+        payload: { title: category, chip: chip }
+      })
+    },
+    handleDelete: (category, chip) => {
+      dispatch({
+        type: EDIT_FORM_DELETE_CHIP,
+        payload: { title: category, chip: chip }
+      })
+    },
+    retry: (history, id) => e => {
+      dispatch(getVideo(id))
+      // history.push(`/videos/${id}`)
+    }
   }
 }
 
