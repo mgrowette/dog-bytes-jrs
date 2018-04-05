@@ -18,7 +18,8 @@ import ExpandMoreIcon from 'material-ui-icons/ExpandMore'
 import Divider from 'material-ui/Divider'
 // import MoreVertIcon from 'material-ui-icons/MoreVert'
 import classnames from 'classnames'
-import { join, flatten, map, propOr, isNil } from 'ramda'
+import { join, flatten, map, propOr, isNil, contains, isEmpty } from 'ramda'
+import { toggleFavorite } from '../../action-creators/favorites'
 
 const styles = theme => ({
   card: {
@@ -62,7 +63,7 @@ class Video extends React.Component {
         <VideoListItem video={props.video} />
         <ReactPlayer
           url={props.video.youTubeVideoURL}
-          width="400"
+          width="flex"
           height="300px"
           controls={true}
         />
@@ -85,8 +86,9 @@ class Video extends React.Component {
           </CardContent>
           <CardActions className={classes.actions} disableActionSpacing>
             <IconButton
-              onClick={e => console.log('you clicked the favorite button')}
+              onClick={props.toggleFavorite}
               aria-label="Add to favorites"
+              style={{ color: props.favorites ? 'red' : null }}
             >
               <FavoriteIcon />
             </IconButton>
@@ -129,8 +131,8 @@ class Video extends React.Component {
               <Divider />
               <Typography paragraph>More placeholder text....</Typography>
               <Typography>
-                After consumption of this video, do not swim for at least 30
-                minutes. It is pretty dense.
+                {`After consumption of this video, do not swim for at least 30
+                minutes. It's pretty dense.`}
               </Typography>
             </CardContent>
           </Collapse>
@@ -143,14 +145,18 @@ class Video extends React.Component {
 const mapStateToProps = state => {
   return {
     video: state.video,
-    expanded: state.toggleExpanded
+    expanded: state.toggleExpanded,
+    favorites: contains(state.video._id, state.favorites)
   }
 }
 
 const mapActionsToProps = dispatch => {
   return {
     getVideo: id => dispatch(getVideo(id)),
-    handleExpandClick: () => dispatch({ type: TOGGLE_EXPANDED })
+    handleExpandClick: () => dispatch({ type: TOGGLE_EXPANDED }),
+    toggleFavorite: () => {
+      dispatch(toggleFavorite)
+    }
   }
 }
 
