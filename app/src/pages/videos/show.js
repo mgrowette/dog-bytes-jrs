@@ -77,13 +77,6 @@ class Video extends React.Component {
                 />
               )
             }
-            action={
-              <Link to={`/videos/${props.video._id}/edit`}>
-                <IconButton aria-label="Edit Video">
-                  <EditIcon />
-                </IconButton>
-              </Link>
-            }
             title={props.video.name}
             subheader={props.video.date}
           />
@@ -100,6 +93,11 @@ class Video extends React.Component {
             <IconButton aria-label="Share">
               <ShareIcon />
             </IconButton>
+            <Link to={`/videos/${props.video._id}/edit`}>
+              <IconButton aria-label="Edit Video">
+                <EditIcon />
+              </IconButton>
+            </Link>
             <IconButton
               className={classnames(classes.expand, {
                 [classes.expandOpen]: props.expanded.toggleExpanded
