@@ -18,12 +18,12 @@ import ExpandMoreIcon from 'material-ui-icons/ExpandMore'
 import Divider from 'material-ui/Divider'
 // import MoreVertIcon from 'material-ui-icons/MoreVert'
 import classnames from 'classnames'
-import { join, flatten, map, propOr, isNil, contains, isEmpty } from 'ramda'
+import { join, flatten, map, propOr, isNil, contains } from 'ramda'
 import { toggleFavorite } from '../../action-creators/favorites'
 
 const styles = theme => ({
   card: {
-    maxWidth: 400
+    maxWidth: 'flex'
   },
   media: {
     height: 194

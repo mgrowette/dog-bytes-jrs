@@ -6,6 +6,7 @@ import Videos from './pages/videos'
 import Video from './pages/videos/show'
 import AddVideo from './pages/videos/addVideo'
 import EditVideo from './pages/videos/editVideo'
+import Favorites from './pages/favorites'
 import Search from './pages/search'
 
 class App extends Component {
@@ -19,6 +20,7 @@ class App extends Component {
             <Route exact path="/videos/add" component={AddVideo} />
             <Route exact path="/videos/:id/edit" component={EditVideo} />
             <Route exact path="/videos/search" component={Search} />
+            <Route exact path="/videos/favorites" component={Favorites} />
             <Route exact path="/videos/:id" component={Video} />
           </Switch>
         </div>

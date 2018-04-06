@@ -10,13 +10,11 @@ export function toggleFavorite(dispatch, getState) {
       : append(video._id, favorites)
 
     window.localStorage.setItem('favorites', JSON.stringify(newFavorites))
-    console.log('if statement called')
     dispatch({
       type: SET_FAVORITES,
       payload: newFavorites
     })
   } else {
-    console.log('else statement called')
     window.localStorage.setItem('favorites', JSON.stringify([video._id]))
     dispatch({ type: SET_FAVORITES, payload: [video._id] })
   }

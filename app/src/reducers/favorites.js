@@ -8,7 +8,7 @@ export const favorites = (
     : [],
   action
 ) => {
-  console.log('STATE', state)
+  console.log('FAVORITES STATE', state)
   switch (action.type) {
     case SET_FAVORITES:
       return action.payload

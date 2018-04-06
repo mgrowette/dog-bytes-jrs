@@ -28,7 +28,7 @@ const MenuAppBar = props => {
   const { classes } = props
 
   return (
-    <div className={classes.root}>
+    <div>
       <AppBar position="static">
         <Toolbar>
           {props.showBackArrow ? (
