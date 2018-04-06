@@ -20,6 +20,7 @@ import Divider from 'material-ui/Divider'
 import classnames from 'classnames'
 import { join, flatten, map, propOr, isNil, contains } from 'ramda'
 import { toggleFavorite } from '../../action-creators/favorites'
+import { CopyToClipboard } from 'react-copy-to-clipboard'
 
 const styles = theme => ({
   card: {
@@ -92,9 +93,11 @@ class Video extends React.Component {
             >
               <FavoriteIcon />
             </IconButton>
-            <IconButton aria-label="Share">
-              <ShareIcon />
-            </IconButton>
+            <CopyToClipboard text={props.video.youTubeVideoURL}>
+              <IconButton aria-label="Share">
+                <ShareIcon />
+              </IconButton>
+            </CopyToClipboard>
             <Link to={`/videos/${props.video._id}/edit`}>
               <IconButton aria-label="Edit Video">
                 <EditIcon />

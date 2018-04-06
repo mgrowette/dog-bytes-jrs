@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import VideoListItem from '../../components/VideoListItem'
 import List from 'material-ui/List'
-import { map, not, isEmpty, join, contains } from 'ramda'
+import { map, not, isEmpty, contains } from 'ramda'
 
 const Favorites = props => {
   console.log('PROPS.FAVORITES', props.favorites)
