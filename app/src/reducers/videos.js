@@ -11,14 +11,30 @@ import {
   DELETE_CHIP,
   EDIT_FORM_DELETE_CHIP,
   EDIT_FORM_ADD_CHIP,
-  TOGGLE_ADD_CHIP
+  TOGGLE_ADD_CHIP,
+  NEW_TAG_TEXT,
+  CREATE_TAG,
+  CLEAR_NEW_TAG
 } from '../constants'
-import { merge, not, map, uniq, concat, assoc, reject } from 'ramda'
+import {
+  merge,
+  not,
+  map,
+  uniq,
+  concat,
+  assoc,
+  reject,
+  append,
+  flatten
+} from 'ramda'
 
 export const videos = (state = [], action) => {
   switch (action.type) {
     case SET_VIDEOS:
       return action.payload
+    case CREATE_TAG:
+      const newState = flatten(append(state, [action.payload]))
+      return newState
     default:
       return state
   }
@@ -130,6 +146,17 @@ export const toggleAddChip = (state = { toggleAddChip: false }, action) => {
   switch (action.type) {
     case TOGGLE_ADD_CHIP:
       return merge(state, { toggleAddChip: not(state.toggleAddChip) })
+    default:
+      return state
+  }
+}
+
+export const newTag = (state = {}, action) => {
+  switch (action.type) {
+    case NEW_TAG_TEXT:
+      return merge(state, action.payload)
+    case CLEAR_NEW_TAG:
+      return {}
     default:
       return state
   }

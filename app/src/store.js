@@ -4,7 +4,8 @@ import {
   video,
   addVideo,
   toggleExpanded,
-  toggleAddChip
+  toggleAddChip,
+  newTag
 } from './reducers/videos'
 import { favorites } from './reducers/favorites'
 import { searchCriteria } from './reducers/search'
@@ -18,7 +19,8 @@ const store = createStore(
     toggleExpanded,
     toggleAddChip,
     searchCriteria,
-    favorites
+    favorites,
+    newTag
   }),
   applyMiddleware(thunk)
 )

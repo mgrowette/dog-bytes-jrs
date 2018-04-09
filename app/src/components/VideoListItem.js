@@ -13,7 +13,7 @@ const VideoListItem = props => {
         style={{ textDecoration: 'none', color: 'black' }}
       >
         <ListItem>
-          <ListItemText primary={name} secondary={instructor} />
+          <ListItemText key={_id} primary={name} secondary={instructor} />
         </ListItem>
       </Link>
       <Divider />

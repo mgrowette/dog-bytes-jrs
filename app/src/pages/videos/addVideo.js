@@ -11,13 +11,15 @@ import {
   SET_PHOTO,
   ADD_CHIP,
   DELETE_CHIP,
-  TOGGLE_ADD_CHIP
+  TOGGLE_ADD_CHIP,
+  NEW_TAG_TEXT,
+  CREATE_TAG,
+  CLEAR_NEW_TAG
 } from '../../constants'
 import List from 'material-ui/List'
 import { ChipGroup } from '../../components/ChipGroup'
-// import Typography from 'material-ui/Typography'
-// import MenuItem from 'material-ui/Menu/MenuItem'
-// import Divider from 'material-ui/Divider'
+import Typography from 'material-ui/Typography'
+import Divider from 'material-ui/Divider'
 
 const AddVideo = props => {
   const videoTags = compose(uniq, flatten, map(video => video.tags))(
@@ -84,6 +86,35 @@ const AddVideo = props => {
               onDelete={props.handleDelete}
             />
           </List>
+          <Typography paragraph variant="body2">
+            {`Don't see a tag you want? Add it below!`}
+          </Typography>
+          {props.addChip.toggleAddChip === false ? (
+            <div>
+              <Button onClick={props.toggleAddChip}>Add a Tag</Button>
+              <Divider />
+            </div>
+          ) : (
+            <div>
+              <div>
+                <TextField
+                  id="Content"
+                  label="New Content"
+                  category="Content"
+                  margin="normal"
+                  helperText="What tag would you like to add?"
+                  onChange={e => props.newTagText('Content', e.target.value)}
+                />
+              </div>
+              <div>
+                <Button onClick={props.createTag(props.newTag)}>
+                  Add New Tag
+                </Button>
+                <Button onClick={props.toggleAddChip}>Never Mind</Button>
+                <Divider />
+              </div>
+            </div>
+          )}
         </FormControl>
         <Button
           variant="flat"
@@ -120,7 +151,8 @@ const mapStateToProps = state => {
   return {
     videos: state.videos,
     video: state.addVideo,
-    addChip: state.toggleAddChip
+    addChip: state.toggleAddChip,
+    newTag: state.newTag
   }
 }
 
@@ -153,50 +185,24 @@ const mapActionsToProps = dispatch => {
       const blob = compose(path(['target', 'result']), head, head)(results)
       doDispatch('PHOTO', blob)
     },
-    toggleAddChip: () => dispatch({ type: TOGGLE_ADD_CHIP })
+    toggleAddChip: () => dispatch({ type: TOGGLE_ADD_CHIP }),
+    createTag: tag => e => {
+      dispatch({
+        type: CREATE_TAG,
+        payload: tag
+      })
+      dispatch({ type: TOGGLE_ADD_CHIP })
+      dispatch({ type: CLEAR_NEW_TAG })
+    },
+    newTagText: (category, value) => {
+      dispatch({
+        type: NEW_TAG_TEXT,
+        payload: { tags: [{ title: category, chips: [value] }] }
+      })
+    }
   }
 }
 
 const connector = connect(mapStateToProps, mapActionsToProps)
 
 export default connector(AddVideo)
-
-// <Typography paragraph variant="body2">
-//   {`Don't see a tag you want? Add it below!`}
-// </Typography>
-// {props.addChip.toggleAddChip === false ? (
-//   <div>
-//     <Button onClick={props.toggleAddChip}>Add a Tag</Button>
-//     <Divider />
-//   </div>
-// ) : (
-//   <div>
-//     <div>
-//       <div>
-//         <TextField
-//           id="selectCategory"
-//           label="Category"
-//           margin="normal"
-//           helperText="What category of tag would you like to add?"
-//           select
-//           value={['Content', 'Stack']}
-//         >
-//           {map(option => (
-//             <MenuItem value={option}>{option}</MenuItem>
-//           ))(['Content', 'Stack'])}
-//         </TextField>
-//       </div>
-//       <TextField
-//         id="newTagChip"
-//         label="New Tag"
-//         margin="normal"
-//         helperText="What tag would you like to add?"
-//       />
-//     </div>
-//     <div>
-//       <Button onClick={props.toggleAddChip}>Add New Tag</Button>
-//       <Button onClick={props.toggleAddChip}>Never Mind</Button>
-//       <Divider />
-//     </div>
-//   </div>
-// )}
