@@ -116,17 +116,6 @@ const AddVideo = props => {
             </div>
           )}
         </FormControl>
-        <Button
-          variant="flat"
-          component="span"
-          color="primary"
-          onClick={props.onSubmit(props.history, props.video)}
-        >
-          Submit
-        </Button>
-        <Button color="secondary" onClick={props.cancel(props.history)}>
-          Cancel
-        </Button>
         <div>
           <FileInput onChange={props.handlePhoto}>
             <img
@@ -142,6 +131,17 @@ const AddVideo = props => {
             </Button>
           </FileInput>
         </div>
+        <Button
+          variant="flat"
+          component="span"
+          color="primary"
+          onClick={props.onSubmit(props.history, props.video)}
+        >
+          Submit
+        </Button>
+        <Button color="secondary" onClick={props.cancel(props.history)}>
+          Cancel
+        </Button>
       </form>
     </div>
   )
