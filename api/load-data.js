@@ -66,8 +66,7 @@ db
     {
       _id: 'video_beginner-ramda-introduction-basic-javascript',
       type: 'video',
-      name:
-        'Introduction to the Immutable Database, Ramda, and Basic JavaScript functionality.',
+      name: 'Introduction to Ramda and Basic JavaScript functionality',
       desc:
         'In this video, Trip does an overview of very basic JavaScript native functions and how to model these functions within the immutable database Ramda.',
       instructor: 'Trip Ottinger',
@@ -109,7 +108,7 @@ db
             'Arrays',
             'Dot Notation',
             'Filter',
-            'Square Bracked Notation',
+            'Square Bracket Notation',
             'Filter',
             'Reject',
             'Map'
@@ -267,7 +266,8 @@ db
       instructor: 'Trip Ottinger',
       instructorPicData: null,
       duration: '3:26:39',
-      youTubeVideoURL: '',
+      youTubeVideoURL:
+        'https://www.youtube.com/watch?v=z5KP8BARPHE&feature=youtu.be',
       tags: [
         { title: 'Difficulty', chips: ['Intermediate'] },
         { title: 'Stack', chips: ['API'] },
@@ -282,8 +282,7 @@ db
     {
       _id: 'video_async-couchdb-callback-functions-call-stack-browser',
       type: 'video',
-      name:
-        'CouchDB, Asynchronous Calls, and the Call Stack: How Information is Handled by the Browser',
+      name: 'CouchDB, Asynchronous Calls, and the Call Stack',
       desc:
         'In this video, Trip adapts his Todos API to store information in a PouchDB database rather than locally on his machine. This involves the use of asynchronous functions and callback functions. He also plays a YouTube video explaining what an event loop is and how it works. A great demonstration of the call stack.',
       instructor: 'Trip Ottinger',
@@ -312,8 +311,7 @@ db
     {
       _id: 'video_review-bulkDocs-introduction-allDocs-promises-async',
       type: 'video',
-      name:
-        'Review of CouchDb bulkDocs and Introduction to allDocs and Promises',
+      name: 'Review of CouchDb bulkDocs, Introduction to allDocs and Promises',
       desc:
         'In this video, Trip gives a review of CouchDB bulkDocs and allDocs operations. This is done in the context of a dogs API. He also introduces the concept of using promises rather than callback functions to handle asynchronous function calls.',
       instructor: 'Trip Ottinger',
@@ -422,7 +420,7 @@ db
         'video_introduction-relational-database-management-systeems-sql-mysql-relational-data-modeling',
       type: 'video',
       name:
-        'An Introduction to Relational Database Management Systems, SQL, and MySQL',
+        'Introduction to Relational Database Management Systems: SQL & MySQL',
       desc:
         'In this video, Trip introduces the concept of Relational Database Management Systems (RDBMS), specifically SQL. He then delves into the use of SQL with MySQL, how to install MySQL, and how to run it in your terminal. The video also introduces Relational Data Modeling, a form of data modeling completely separate from JSON. A great video for anyone who needs to review RDMS, SQL, and MySQL.',
       instructor: 'Trip Ottinger',
