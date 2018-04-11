@@ -127,7 +127,17 @@ export const addVideo = (
         state
       )
     case RESET_ADD_VIDEO_FORM:
-      return {}
+      return {
+        name: '',
+        instructor: '',
+        tags: [
+          { title: 'Difficulty', chips: [] },
+          { title: 'Stack', chips: [] },
+          { title: 'Content', chips: [] }
+        ],
+        desc: '',
+        youTubeVideoURL: ''
+      }
     default:
       return state
   }
