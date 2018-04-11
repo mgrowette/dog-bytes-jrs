@@ -19,6 +19,7 @@ import classnames from 'classnames'
 import { join, flatten, map, propOr, isNil, contains } from 'ramda'
 import { toggleFavorite } from '../../action-creators/favorites'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
+import Tooltip from 'material-ui/Tooltip'
 
 const styles = theme => ({
   card: {
@@ -57,12 +58,15 @@ class Video extends React.Component {
 
     return (
       <div>
-        <MenuAppBar {...props} showBackArrow={true} title="Video" />
+        <center>
+          <MenuAppBar {...props} showBackArrow={true} title="Video" />
+        </center>
         <ReactPlayer
           url={props.video.youTubeVideoURL}
           width="flex"
           height="300px"
           controls={true}
+          style={{ paddingTop: '20px', paddingBottom: '15px' }}
         />
         <Card className={classes.card}>
           <CardHeader
@@ -82,22 +86,28 @@ class Video extends React.Component {
             <Typography component="p">{props.video.desc}</Typography>
           </CardContent>
           <CardActions className={classes.actions} disableActionSpacing>
-            <IconButton
-              onClick={props.toggleFavorite}
-              aria-label="Add to favorites"
-              style={{ color: props.favorites ? 'red' : null }}
-            >
-              <FavoriteIcon />
-            </IconButton>
-            <CopyToClipboard text={props.video.youTubeVideoURL}>
-              <IconButton aria-label="Share">
-                <ShareIcon />
+            <Tooltip id="favorite" title="Favorite" placement="top">
+              <IconButton
+                onClick={props.toggleFavorite}
+                aria-label="Add to favorites"
+                style={{ color: props.favorites ? 'red' : null }}
+              >
+                <FavoriteIcon />
               </IconButton>
+            </Tooltip>
+            <CopyToClipboard text={props.video.youTubeVideoURL}>
+              <Tooltip id="copy-url" title="Copy Url" placement="top">
+                <IconButton aria-label="Share">
+                  <ShareIcon />
+                </IconButton>
+              </Tooltip>
             </CopyToClipboard>
             <Link to={`/videos/${props.video._id}/edit`}>
-              <IconButton aria-label="Edit Video">
-                <EditIcon />
-              </IconButton>
+              <Tooltip id="edit-video" title="Edit" placement="top">
+                <IconButton aria-label="Edit Video">
+                  <EditIcon />
+                </IconButton>
+              </Tooltip>
             </Link>
             <IconButton
               className={classnames(classes.expand, {

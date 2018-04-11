@@ -19,6 +19,7 @@ import {
 } from 'ramda'
 import { searchField } from '../../action-creators/videos'
 import BottomAppBar from '../../components/BottomAppBar'
+import Divider from 'material-ui/Divider'
 
 const Search = props => {
   const videoTags = compose(uniq, flatten, map(video => video.tags))(
@@ -28,7 +29,7 @@ const Search = props => {
   return (
     <div>
       <center>
-        <MenuAppBar title="Search" showBackArrow={true} />
+        <MenuAppBar title="Search" />
       </center>
       <div style={{ paddingTop: '45px' }}>
         <TextField
@@ -67,6 +68,7 @@ const Search = props => {
           onDelete={props.handleDelete}
         />
       </List>
+      <Divider />
       <List style={{ paddingTop: '45px', paddingBottom: '45px' }}>
         {not(
           isNil(props.searchCriteria.search) ||

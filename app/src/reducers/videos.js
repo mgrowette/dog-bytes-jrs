@@ -11,7 +11,6 @@ import {
   DELETE_CHIP,
   EDIT_FORM_DELETE_CHIP,
   EDIT_FORM_ADD_CHIP,
-  TOGGLE_ADD_CHIP,
   NEW_TAG_TEXT,
   CREATE_TAG,
   CLEAR_NEW_TAG
@@ -152,14 +151,14 @@ export const toggleExpanded = (state = false, action) => {
   }
 }
 
-export const toggleAddChip = (state = { toggleAddChip: false }, action) => {
-  switch (action.type) {
-    case TOGGLE_ADD_CHIP:
-      return merge(state, { toggleAddChip: not(state.toggleAddChip) })
-    default:
-      return state
-  }
-}
+// export const toggleAddChip = (state = { toggleAddChip: false }, action) => {
+//   switch (action.type) {
+//     case TOGGLE_ADD_CHIP:
+//       return merge(state, { toggleAddChip: not(state.toggleAddChip) })
+//     default:
+//       return state
+//   }
+// }
 
 export const newTag = (state = {}, action) => {
   switch (action.type) {

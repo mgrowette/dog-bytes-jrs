@@ -18,7 +18,8 @@ const styles = theme => ({
     position: 'fixed',
     left: '0px',
     bottom: '0px',
-    width: '100%'
+    width: '100%',
+    backgroundColor: '#EAEDED'
   }
 })
 

@@ -54,15 +54,8 @@ const MenuAppBar = props => {
   )
 }
 
-// const mapStateToProps = state => {
-//   return {
-//     drawerToggleState: state.drawer
-//   }
-// }
-
 const mapActionsToProps = dispatch => {
   return {
-    // toggleDrawer: () => dispatch({ type: TOGGLE_DRAWER }),
     navigateBack: history => {
       history.goBack()
     }
