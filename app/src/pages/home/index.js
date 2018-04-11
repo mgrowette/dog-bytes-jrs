@@ -1,6 +1,7 @@
 import React from 'react'
 import MenuAppBar from '../../components/MenuAppBar'
 import { withStyles } from 'material-ui/styles'
+import BottomAppBar from '../../components/BottomAppBar'
 
 const url = 'http://localhost:3000'
 const imgUrl = '/jrs-coding-logo.jpg'
@@ -18,8 +19,9 @@ const Home = props => {
   return (
     <div>
       <center>
-        <MenuAppBar title="Home Page" />
+        <MenuAppBar position="fixed" title="Home Page" />
         <div className={classes.background} />
+        <BottomAppBar position="fixed" />
       </center>
     </div>
   )

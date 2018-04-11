@@ -25,6 +25,7 @@ import {
 } from '../../constants'
 import { ChipGroup } from '../../components/ChipGroup'
 import List from 'material-ui/List'
+import BottomAppBar from '../../components/BottomAppBar'
 
 const EditVideo = props => {
   const videoTags = compose(uniq, flatten, map(video => video.tags))(
@@ -38,7 +39,12 @@ const EditVideo = props => {
   }
   return (
     <div>
-      <MenuAppBar title="Edit Video" showBackArrow={true} {...props} />
+      <MenuAppBar
+        position="fixed"
+        title="Edit Video"
+        showBackArrow={true}
+        {...props}
+      />
       <form>
         <FormControl noValidate autoComplete="off">
           <TextField
@@ -126,6 +132,7 @@ const EditVideo = props => {
           </DialogActions>
         </Dialog>
       </form>
+      <BottomAppBar />
     </div>
   )
 }

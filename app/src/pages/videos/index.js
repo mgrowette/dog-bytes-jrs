@@ -6,16 +6,20 @@ import VideoListItem from '../../components/VideoListItem'
 import Button from 'material-ui/Button'
 import { map } from 'ramda'
 import { connect } from 'react-redux'
+import BottomAppBar from '../../components/BottomAppBar'
 
 const Videos = props => {
   const { videos } = props
   return (
     <div>
-      <MenuAppBar title="Videos" />
+      <center>
+        <MenuAppBar position="fixed" title="Videos" />
+      </center>
       <List>{map(video => <VideoListItem video={video} />, videos)}</List>
       <Link to="/videos/add">
         <Button>Add Video</Button>
       </Link>
+      <BottomAppBar />
     </div>
   )
 }

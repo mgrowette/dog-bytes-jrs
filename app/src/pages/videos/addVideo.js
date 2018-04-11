@@ -20,6 +20,7 @@ import List from 'material-ui/List'
 import { ChipGroup } from '../../components/ChipGroup'
 import Typography from 'material-ui/Typography'
 import Divider from 'material-ui/Divider'
+import BottomAppBar from '../../components/BottomAppBar'
 
 const AddVideo = props => {
   const videoTags = compose(uniq, flatten, map(video => video.tags))(
@@ -28,7 +29,9 @@ const AddVideo = props => {
 
   return (
     <div>
-      <MenuAppBar title="Add a Video" {...props} showBackArrow={true} />
+      <center>
+        <MenuAppBar title="Add a Video" {...props} showBackArrow={true} />
+      </center>
       <form>
         <FormControl noValidate autoComplete="off">
           <TextField
@@ -142,6 +145,9 @@ const AddVideo = props => {
         <Button color="secondary" onClick={props.cancel(props.history)}>
           Cancel
         </Button>
+        <center>
+          <BottomAppBar />
+        </center>
       </form>
     </div>
   )

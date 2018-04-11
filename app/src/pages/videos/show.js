@@ -1,6 +1,5 @@
 import React from 'react'
 import MenuAppBar from '../../components/MenuAppBar'
-import VideoListItem from '../../components/VideoListItem'
 import { TOGGLE_EXPANDED } from '../../constants'
 import { connect } from 'react-redux'
 import ReactPlayer from 'react-player'
@@ -59,8 +58,6 @@ class Video extends React.Component {
     return (
       <div>
         <MenuAppBar {...props} showBackArrow={true} title="Video" />
-
-        <VideoListItem video={props.video} />
         <ReactPlayer
           url={props.video.youTubeVideoURL}
           width="flex"
@@ -119,10 +116,15 @@ class Video extends React.Component {
             unmountOnExit
           >
             <CardContent>
-              <Typography paragraph variant="body2">
-                Video Tags:
-              </Typography>
+              <Divider />
+              <br />
               <Typography paragraph>
+                Instructor: {props.video.instructor}
+              </Typography>
+              <Divider />
+              <br />
+              <Typography paragraph>
+                Tags:{' '}
                 {join(
                   ', ',
                   flatten(
@@ -131,11 +133,8 @@ class Video extends React.Component {
                 )}
               </Typography>
               <Divider />
-              <Typography paragraph>More placeholder text....</Typography>
-              <Typography>
-                {`After consumption of this video, do not swim for at least 30
-                minutes. It's pretty dense.`}
-              </Typography>
+              <br />
+              <Typography>Notes: {props.video.notes}</Typography>
             </CardContent>
           </Collapse>
         </Card>

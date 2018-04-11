@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import VideoListItem from '../../components/VideoListItem'
 import List from 'material-ui/List'
 import { map, not, isEmpty, contains } from 'ramda'
+import BottomAppBar from '../../components/BottomAppBar'
 
 const Favorites = props => {
   console.log('PROPS.FAVORITES', props.favorites)
@@ -27,6 +28,7 @@ const Favorites = props => {
           <h1>Sorry, no favorites found</h1>
         )}
       </List>
+      <BottomAppBar />
     </div>
   )
 }
