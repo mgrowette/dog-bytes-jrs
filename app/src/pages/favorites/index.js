@@ -3,16 +3,16 @@ import { connect } from 'react-redux'
 import VideoListItem from '../../components/VideoListItem'
 import List from 'material-ui/List'
 import { map, not, isEmpty, contains } from 'ramda'
+import BottomAppBar from '../../components/BottomAppBar'
+import MenuAppBar from '../../components/MenuAppBar'
 
 const Favorites = props => {
-  console.log('PROPS.FAVORITES', props.favorites)
-  console.log(
-    `JSON.parse(window.localStorage.getItem('favorites')`,
-    JSON.parse(window.localStorage.getItem('favorites'))
-  )
   return (
     <div>
-      <List>
+      <center>
+        <MenuAppBar />
+      </center>
+      <List style={{ paddingTop: '45px', paddingBottom: '45px' }}>
         {not(isEmpty(props.favorites)) ? (
           map(
             video =>
@@ -27,6 +27,7 @@ const Favorites = props => {
           <h1>Sorry, no favorites found</h1>
         )}
       </List>
+      <BottomAppBar />
     </div>
   )
 }

@@ -29,7 +29,7 @@ const MenuAppBar = props => {
 
   return (
     <div>
-      <AppBar position="static">
+      <AppBar position="fixed">
         <Toolbar>
           {props.showBackArrow ? (
             <IconButton
@@ -46,7 +46,7 @@ const MenuAppBar = props => {
             variant="title"
             color="secondary"
           >
-            {props.title}
+            Dog Bytes: JRS Videos
           </Typography>
         </Toolbar>
       </AppBar>

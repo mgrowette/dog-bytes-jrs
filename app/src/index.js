@@ -9,16 +9,14 @@ import { Provider } from 'react-redux'
 import 'typeface-roboto'
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
 import 'animate.css'
-// import red from 'material-ui/colors/red'
-// import yellow from 'material-ui/colors/yellow'
 
 const customTheme = createMuiTheme({
   palette: {
     primary: {
-      main: '#800000'
+      main: '#000000'
     },
     secondary: {
-      main: '#FFDF00'
+      main: '#AAB7B8'
     }
   }
 })
