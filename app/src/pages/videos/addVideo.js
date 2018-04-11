@@ -11,7 +11,6 @@ import {
   SET_PHOTO,
   ADD_CHIP,
   DELETE_CHIP,
-  TOGGLE_ADD_CHIP,
   NEW_TAG_TEXT,
   CREATE_TAG,
   CLEAR_NEW_TAG
@@ -30,7 +29,7 @@ const AddVideo = props => {
   return (
     <div>
       <center>
-        <MenuAppBar title="Add a Video" {...props} showBackArrow={true} />
+        <MenuAppBar title="Add a Video" />
       </center>
       <form style={{ paddingTop: '45px', paddingBottom: '45px' }}>
         <FormControl noValidate autoComplete="off">
@@ -62,6 +61,13 @@ const AddVideo = props => {
             value={props.video.youTubeVideoURL}
             onChange={e => props.onChange('youTubeVideoURL', e.target.value)}
           />
+          <TextField
+            id="notes"
+            label="Notes"
+            margin="normal"
+            value={props.video.notes}
+            onChange={e => props.onChange('notes', e.target.value)}
+          />
           <List>
             <ChipGroup
               data={videoTags}
@@ -92,32 +98,22 @@ const AddVideo = props => {
           <Typography paragraph variant="body2">
             {`Don't see a tag you want? Add it below!`}
           </Typography>
-          {props.addChip.toggleAddChip === false ? (
+          <div>
+            <TextField
+              id="Content"
+              label="New Content"
+              category="Content"
+              margin="normal"
+              helperText="What tag would you like to add?"
+              onChange={e => props.newTagText('Content', e.target.value)}
+            />
             <div>
-              <Button onClick={props.toggleAddChip}>Add a Tag</Button>
+              <Button onClick={props.createTag(props.newTag)}>
+                Add New Tag
+              </Button>
               <Divider />
             </div>
-          ) : (
-            <div>
-              <div>
-                <TextField
-                  id="Content"
-                  label="New Content"
-                  category="Content"
-                  margin="normal"
-                  helperText="What tag would you like to add?"
-                  onChange={e => props.newTagText('Content', e.target.value)}
-                />
-              </div>
-              <div>
-                <Button onClick={props.createTag(props.newTag)}>
-                  Add New Tag
-                </Button>
-                <Button onClick={props.toggleAddChip}>Never Mind</Button>
-                <Divider />
-              </div>
-            </div>
-          )}
+          </div>
         </FormControl>
         <div>
           <FileInput onChange={props.handlePhoto}>
@@ -191,13 +187,12 @@ const mapActionsToProps = dispatch => {
       const blob = compose(path(['target', 'result']), head, head)(results)
       doDispatch('PHOTO', blob)
     },
-    toggleAddChip: () => dispatch({ type: TOGGLE_ADD_CHIP }),
+    toggleAddChip: () => dispatch({ type: CLEAR_NEW_TAG }),
     createTag: tag => e => {
       dispatch({
         type: CREATE_TAG,
         payload: tag
       })
-      dispatch({ type: TOGGLE_ADD_CHIP })
       dispatch({ type: CLEAR_NEW_TAG })
     },
     newTagText: (category, value) => {
@@ -212,3 +207,5 @@ const mapActionsToProps = dispatch => {
 const connector = connect(mapStateToProps, mapActionsToProps)
 
 export default connector(AddVideo)
+
+// <Button onClick={props.toggleAddChip}>Never Mind</Button>

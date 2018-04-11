@@ -25,7 +25,6 @@ import {
 } from '../../constants'
 import { ChipGroup } from '../../components/ChipGroup'
 import List from 'material-ui/List'
-import BottomAppBar from '../../components/BottomAppBar'
 
 const EditVideo = props => {
   const videoTags = compose(uniq, flatten, map(video => video.tags))(
@@ -39,13 +38,10 @@ const EditVideo = props => {
   }
   return (
     <div>
-      <MenuAppBar
-        position="fixed"
-        title="Edit Video"
-        showBackArrow={true}
-        {...props}
-      />
-      <form style={{ paddingTop: '45px', paddingBottom: '45px' }}>
+      <center>
+        <MenuAppBar title="Edit Video" />
+      </center>
+      <form style={{ paddingTop: '45px' }}>
         <FormControl noValidate autoComplete="off">
           <TextField
             id="name"
@@ -103,13 +99,22 @@ const EditVideo = props => {
             />
           </List>
         </FormControl>
-        <Button onClick={props.onSubmit(props.history, props.video)}>
+        <Button
+          style={{ backgroundColor: '#AAB7B8' }}
+          onClick={props.onSubmit(props.history, props.video)}
+        >
           Submit
         </Button>
-        <Button onClick={props.cancel(props.history, props.video)}>
+        <Button
+          color="secondary"
+          onClick={props.cancel(props.history, props.video)}
+        >
           Cancel
         </Button>
-        <Button color="secondary" onClick={props.toggleDelete}>
+        <Button
+          style={{ color: 'black', backgroundColor: 'red' }}
+          onClick={props.toggleDelete}
+        >
           Delete
         </Button>
         <Dialog
@@ -126,12 +131,10 @@ const EditVideo = props => {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={props.toggleDelete} color="primary">
-              Cancel
-            </Button>
+            <Button onClick={props.toggleDelete}>Cancel</Button>
             <Button
               onClick={() => props.deleteVideo(props.video._id, props.history)}
-              color="primary"
+              style={{ color: 'red' }}
               autoFocus
             >
               Confirm Delete
@@ -139,7 +142,6 @@ const EditVideo = props => {
           </DialogActions>
         </Dialog>
       </form>
-      <BottomAppBar />
     </div>
   )
 }

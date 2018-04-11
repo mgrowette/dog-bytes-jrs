@@ -4,7 +4,6 @@ import {
   video,
   addVideo,
   toggleExpanded,
-  toggleAddChip,
   newTag
 } from './reducers/videos'
 import { favorites } from './reducers/favorites'
@@ -17,7 +16,6 @@ const store = createStore(
     video,
     addVideo,
     toggleExpanded,
-    toggleAddChip,
     searchCriteria,
     favorites,
     newTag
