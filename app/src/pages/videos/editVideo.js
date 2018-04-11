@@ -45,7 +45,7 @@ const EditVideo = props => {
         showBackArrow={true}
         {...props}
       />
-      <form>
+      <form style={{ paddingTop: '45px', paddingBottom: '45px' }}>
         <FormControl noValidate autoComplete="off">
           <TextField
             id="name"
@@ -67,6 +67,13 @@ const EditVideo = props => {
             margin="normal"
             value={props.video.youTubeVideoURL}
             onChange={e => props.onChange('url', e.target.value)}
+          />
+          <TextField
+            id="notes"
+            label="Notes"
+            margin="normal"
+            value={props.video.notes}
+            onChange={e => props.onChange('notes', e.target.value)}
           />
           <List>
             <ChipGroup

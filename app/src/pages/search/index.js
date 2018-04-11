@@ -18,6 +18,7 @@ import {
   propOr
 } from 'ramda'
 import { searchField } from '../../action-creators/videos'
+import BottomAppBar from '../../components/BottomAppBar'
 
 const Search = props => {
   const videoTags = compose(uniq, flatten, map(video => video.tags))(
@@ -26,8 +27,10 @@ const Search = props => {
 
   return (
     <div>
-      <MenuAppBar title="Search" showBackArrow={true} />
-      <div>
+      <center>
+        <MenuAppBar title="Search" showBackArrow={true} />
+      </center>
+      <div style={{ paddingTop: '45px' }}>
         <TextField
           id="search"
           label="Search"
@@ -64,7 +67,7 @@ const Search = props => {
           onDelete={props.handleDelete}
         />
       </List>
-      <List>
+      <List style={{ paddingTop: '45px', paddingBottom: '45px' }}>
         {not(
           isNil(props.searchCriteria.search) ||
             isEmpty(props.searchCriteria.search)
@@ -92,6 +95,7 @@ const Search = props => {
             )(props.videos)
           : null}
       </List>
+      <BottomAppBar />
     </div>
   )
 }

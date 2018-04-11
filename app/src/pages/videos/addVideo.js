@@ -32,7 +32,7 @@ const AddVideo = props => {
       <center>
         <MenuAppBar title="Add a Video" {...props} showBackArrow={true} />
       </center>
-      <form>
+      <form style={{ paddingTop: '45px', paddingBottom: '45px' }}>
         <FormControl noValidate autoComplete="off">
           <TextField
             id="name"

@@ -15,7 +15,9 @@ const Videos = props => {
       <center>
         <MenuAppBar position="fixed" title="Videos" />
       </center>
-      <List>{map(video => <VideoListItem video={video} />, videos)}</List>
+      <List style={{ paddingTop: '45px' }}>
+        {map(video => <VideoListItem video={video} />, videos)}
+      </List>
       <Link to="/videos/add">
         <Button>Add Video</Button>
       </Link>
