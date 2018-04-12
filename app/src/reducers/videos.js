@@ -13,7 +13,8 @@ import {
   EDIT_FORM_ADD_CHIP,
   NEW_TAG_TEXT,
   CREATE_TAG,
-  CLEAR_NEW_TAG
+  CLEAR_NEW_TAG,
+  CHANGE_PHOTO
 } from '../constants'
 import {
   merge,
@@ -74,6 +75,8 @@ export const video = (state = {}, action) => {
         ),
         state
       )
+    case CHANGE_PHOTO:
+      return merge(state, { imgPath: action.payload })
     default:
       return state
   }

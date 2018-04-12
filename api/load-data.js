@@ -591,6 +591,114 @@ db
       date: '03/15/18',
       notes: 'No significant audio breaks.',
       imgPath: '/material-ui2.png'
+    },
+    {
+      _id: 'quote_trip-quote-1',
+      quote: `You can expect what you inspect.`
+    },
+    {
+      _id: 'quote_trip-quote-2',
+      quote: `Behold, the stuckness!`
+    },
+    {
+      _id: 'quote_trip-quote-3',
+      quote: `Writing code is like a murder-mystery, and you're the detective`
+    },
+    {
+      _id: 'quote_trip-quote-4',
+      quote: `Console.log good. Console.log your friend.`
+    },
+    {
+      _id: 'quote_trip-quote-5',
+      quote: `Avoid the foot-gun.`
+    },
+    {
+      _id: 'quote_trip-quote-6',
+      quote: `When you code, you need to code for your future, dumber self.`
+    },
+    {
+      _id: 'quote_trip-quote-7',
+      quote: `You will learn that currying is the shizz.`
+    },
+    {
+      _id: 'quote_trip-quote-8',
+      quote: `Shared mutated state is the root of all evil. We don't dabble in the black arts.`
+    },
+    {
+      _id: 'quote_trip-quote-9',
+      quote: `I'm trying to help you, even if I'm being obnoxious about it.`
+    },
+    {
+      _id: 'quote_trip-quote-10',
+      quote: `I'm gonna make your head hurt before you leave. Just a parting gift.`
+    },
+    {
+      _id: 'quote_trip-quote-11',
+      quote: `I'm trying to be dramatic on purpose.`
+    },
+    {
+      _id: 'quote_trip-quote-12',
+      quote: `Is this starting to be like, 'Whoa, I didn't realize the Matrix was all around me'?`
+    },
+    {
+      _id: 'quote_trip-quote-13',
+      quote: `Doggonit, functions are values too. Justice for functions!`
+    },
+    {
+      _id: 'quote_trip-quote-14',
+      quote: `I'm like your tourguide to the world of wonder.`
+    },
+    {
+      _id: 'quote_trip-quote-15',
+      quote: `The best way to get away with murder is to take your friend hunting.`
+    },
+    {
+      _id: 'quote_trip-quote-16',
+      quote: `The user is gonna do anything and everything cuz the user is crazy.`
+    },
+    {
+      _id: 'quote_trip-quote-17',
+      quote: `I asked the waitress, "Are the collard greens sweet or spicy?" And she looked me dead in the eyes and said, "Both." And sonofabitch, they were sweet and spicy!`
+    },
+    {
+      _id: 'quote_trip-quote-18',
+      quote: `How does my wife put up with me? She ignores me. If she's in a good mood, she'll chuckle. She's usually in a good mood. Her personality is the opposite of mine. She's respectable and quiet.`
+    },
+    {
+      _id: 'quote_trip-quote-19',
+      quote: `You are freebasing knowledge right now`
+    },
+    {
+      _id: 'quote_trip-quote-20',
+      quote: `Underpromise and overdeliver.`
+    },
+    {
+      _id: 'quote_trip-quote-21',
+      quote: `I'm just a humble country doctor from Georgia.`
+    },
+    {
+      _id: 'quote_trip-quote-22',
+      quote: `Luck is the residue of opportunity and hard work.`
+    },
+    {
+      _id: 'quote_trip-quote-23',
+      quote: `Anyone see that I'm mutating state? Bending the rules? Being naughty?`
+    },
+    {
+      _id: 'quote_trip-quote-24',
+      quote: `My grandma went cuckoo at 65, so I have about 15 more years.`
+    },
+    {
+      _id: 'quote_trip-quote-25',
+      quote: `You can't just go dancing through the tulips in your render.`
+    },
+    {
+      _id: 'quote_trip-quote-26',
+      quote: `This whole concept of submitting forms - this 1998 Backstreet Boys concept - it doens't really work anymore.`
+    },
+    {
+      _id: 'quote_trip-quote-27',
+      quote: `This industry needs more moms.`
     }
   ])
   .then(result => console.log('Videos successfully uploaded', result))

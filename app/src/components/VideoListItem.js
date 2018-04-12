@@ -7,9 +7,13 @@ const VideoListItem = props => {
   const { name, instructor, imgPath } = props.video
 
   return (
-    <div style={{ backgroundColor: '#D6EAF8' }}>
+    <div style={{ backgroundColor: '#EAEDED' }}>
       <ListItem>
-        <img src={imgPath} alt="video content" style={{ maxWidth: '60px' }} />
+        <img
+          src={imgPath ? imgPath : '/jrs-dog-logo.jpg'}
+          alt="video content"
+          style={{ maxWidth: '60px' }}
+        />
         <ListItemText primary={name} secondary={instructor} />
       </ListItem>
       <Divider />

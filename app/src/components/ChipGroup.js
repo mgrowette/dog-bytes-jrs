@@ -32,7 +32,7 @@ export const ChipGroup = props => {
                   )
                 )
               )
-                ? 'white'
+                ? '#D6EAF8'
                 : null
             }}
             onDelete={

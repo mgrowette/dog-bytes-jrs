@@ -19,6 +19,7 @@ const addVideo = doc => {
   doc._id = `${toLower(doc.type)}_${slugify(docId, { lower: true })}`
   return addDoc(doc)
 }
+const getQuotes = options => allDocs(options || { include_docs: true })
 
 const updateVideo = doc => updateDoc(doc)
 
@@ -29,7 +30,8 @@ const dal = {
   getVideo,
   addVideo,
   updateVideo,
-  deleteVideo
+  deleteVideo,
+  getQuotes
 }
 
 module.exports = dal
