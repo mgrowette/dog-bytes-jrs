@@ -170,7 +170,8 @@ const mapStateToProps = state => {
   console.log('STATE.VIDEO:', state.video)
   return {
     video: state.video,
-    videos: state.videos
+    videos: state.videos,
+    newTag: state.newTag
   }
 }
 
