@@ -5,6 +5,7 @@ import VideoListItem from '../../components/VideoListItem'
 import { map } from 'ramda'
 import { connect } from 'react-redux'
 import BottomAppBar from '../../components/BottomAppBar'
+import { Link } from 'react-router-dom'
 
 const Videos = props => {
   const { videos } = props
@@ -16,7 +17,14 @@ const Videos = props => {
       <List style={{ paddingTop: '45px', paddingBottom: '45px' }}>
         {map(
           video =>
-            video._id ? <VideoListItem key={video._id} video={video} /> : null
+            video._id ? (
+              <Link
+                to={`/videos/${video._id}`}
+                style={{ textDecoration: 'none', color: 'black' }}
+              >
+                <VideoListItem key={video._id} video={video} />
+              </Link>
+            ) : null
         )(videos)}
       </List>
       <BottomAppBar />
