@@ -30,7 +30,7 @@ const Home = props => {
             >
               Click Me! I Dare You.
             </Button>
-            <div styel={{ margin: '15px' }}>
+            <div style={{ margin: '15px' }}>
               {props.quote ? <h4>{props.quote}</h4> : null}
               {props.quote ? <h5> - Trip Ottinger, esq. </h5> : null}
             </div>
