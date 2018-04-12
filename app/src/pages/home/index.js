@@ -4,18 +4,19 @@ import BottomAppBar from '../../components/BottomAppBar'
 import Button from 'material-ui/Button'
 import { getQuote } from '../../action-creators/quotes'
 import { connect } from 'react-redux'
+import Paper from 'material-ui/Paper'
 
 const Home = props => {
   return (
     <div>
-      <div>
+      <Paper style={{ backgroundColor: '#EAEDED' }}>
         <center>
           <MenuAppBar position="fixed" title="Home Page" />
           <div style={{ textAlign: 'center' }}>
             <img
               src="/jrs-coding-logo.jpg"
               alt="coding school logo"
-              style={{ maxWidth: '480px', width: 'flex' }}
+              style={{ maxWidth: '480px', width: 'flex', paddingTop: '55px' }}
             />
           </div>
           <div style={{ paddingBottom: '45px' }}>
@@ -36,7 +37,7 @@ const Home = props => {
           </div>
           <BottomAppBar position="fixed" />
         </center>
-      </div>
+      </Paper>
     </div>
   )
 }
