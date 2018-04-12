@@ -156,15 +156,15 @@ const AddVideo = props => {
           <Button
             variant="flat"
             component="span"
-            color="primary"
-            style={{ backgroundColor: '#EAEDED', margin: '5px' }}
+            color="secondary"
+            style={{ backgroundColor: 'black', margin: '5px' }}
             onClick={props.onSubmit(props.history, props.video)}
           >
             Submit
           </Button>
           <Button
-            color="secondary"
-            style={{ backgroundColor: 'black', margin: '5px' }}
+            color="primary"
+            style={{ backgroundColor: '#EAEDED', margin: '5px' }}
             onClick={props.cancel(props.history)}
           >
             Cancel
@@ -182,7 +182,6 @@ const mapStateToProps = state => {
   return {
     videos: state.videos,
     video: state.addVideo,
-    addChip: state.toggleAddChip,
     newTag: state.newTag
   }
 }
@@ -236,5 +235,3 @@ const mapActionsToProps = dispatch => {
 const connector = connect(mapStateToProps, mapActionsToProps)
 
 export default connector(withStyles(styles)(AddVideo))
-
-// <Button onClick={props.toggleAddChip}>Never Mind</Button>

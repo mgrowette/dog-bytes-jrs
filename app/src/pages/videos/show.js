@@ -164,7 +164,9 @@ const mapActionsToProps = dispatch => {
     toggleFavorite: () => {
       dispatch(toggleFavorite)
     },
-    navigateBack: history => history.push('/videos')
+    navigateBack: history => {
+      history.push('/videos')
+    }
   }
 }
 

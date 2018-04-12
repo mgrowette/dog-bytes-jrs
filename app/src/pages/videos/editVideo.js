@@ -10,7 +10,7 @@ import Dialog, {
   DialogContentText,
   DialogTitle
 } from 'material-ui/Dialog'
-import { compose, uniq, flatten, map, isEmpty } from 'ramda'
+import { compose, uniq, flatten, map, isEmpty, path, head } from 'ramda'
 import {
   editVideoField,
   editVideo,
@@ -24,11 +24,14 @@ import {
   EDIT_FORM_DELETE_CHIP,
   CREATE_TAG,
   CLEAR_NEW_TAG,
-  NEW_TAG_TEXT
+  NEW_TAG_TEXT,
+  CHANGE_PHOTO
 } from '../../constants'
 import { ChipGroup } from '../../components/ChipGroup'
 import Divider from 'material-ui/Divider'
 import { withStyles } from 'material-ui/styles'
+import Typography from 'material-ui/Typography'
+import FileInput from '../../components/FileInput'
 
 const styles = theme => ({
   root: {
@@ -116,6 +119,9 @@ const EditVideo = props => {
             />
           </div>
           <div>
+            <Typography paragraph variant="body2">
+              {`Don't see a tag you want? Add it below!`}
+            </Typography>
             <TextField
               id="Content"
               label="New Content"
@@ -126,19 +132,42 @@ const EditVideo = props => {
             />
             <Button onClick={props.createTag(props.newTag)}>Add New Tag</Button>
           </div>
-          <Divider />
         </FormControl>
         <div>
           <br />
+          <FileInput onChange={props.handlePhoto}>
+            <img
+              style={{ maxWidth: '75px' }}
+              alt="video screenshot"
+              src={
+                props.video.imgPath
+                  ? props.video.imgPath
+                  : "https://placehold.it/64x64?text='photo'"
+              }
+            />
+            <Button
+              variant="flat"
+              component="span"
+              color="primary"
+              style={{ margin: '5px' }}
+            >
+              Upload Photo
+            </Button>
+          </FileInput>
+        </div>
+        <Divider />
+        <br />
+        <div>
           <Button
-            style={{ backgroundColor: '#AAB7B8', margin: '5px' }}
+            color="secondary"
+            style={{ backgroundColor: 'black', margin: '5px' }}
             onClick={props.onSubmit(props.history, props.video)}
           >
             Submit
           </Button>
           <Button
-            color="secondary"
-            style={{ backgroundColor: 'black', margin: '5px' }}
+            color="primary"
+            style={{ backgroundColor: '#EAEDED', margin: '5px' }}
             onClick={props.cancel(props.history, props.video)}
           >
             Cancel
@@ -188,6 +217,9 @@ const mapStateToProps = state => {
 }
 
 const mapActionsToProps = dispatch => {
+  const doDispatch = (field, value) => {
+    dispatch({ type: CHANGE_PHOTO, payload: value })
+  }
   return {
     onChange: (field, value) => dispatch(editVideoField(field, value)),
     onSubmit: (history, video) => e => {
@@ -224,6 +256,10 @@ const mapActionsToProps = dispatch => {
         type: NEW_TAG_TEXT,
         payload: { tags: [{ title: category, chips: [value] }] }
       })
+    },
+    handlePhoto: (e, results) => {
+      const blob = compose(path(['target', 'result']), head, head)(results)
+      doDispatch('PHOTO', blob)
     }
   }
 }
