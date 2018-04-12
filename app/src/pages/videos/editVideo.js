@@ -54,7 +54,7 @@ const EditVideo = props => {
       <center>
         <MenuAppBar title="Edit Video" />
       </center>
-      <form style={{ paddingTop: '45px', paddingLeft: '15px' }}>
+      <form style={{ paddingTop: '55px', paddingLeft: '15px' }}>
         <FormControl noValidate autoComplete="off">
           <TextField
             id="name"
@@ -131,20 +131,20 @@ const EditVideo = props => {
         <div>
           <br />
           <Button
-            style={{ backgroundColor: '#AAB7B8' }}
+            style={{ backgroundColor: '#AAB7B8', margin: '5px' }}
             onClick={props.onSubmit(props.history, props.video)}
           >
             Submit
           </Button>
           <Button
             color="secondary"
-            style={{ backgroundColor: 'black' }}
+            style={{ backgroundColor: 'black', margin: '5px' }}
             onClick={props.cancel(props.history, props.video)}
           >
             Cancel
           </Button>
           <Button
-            style={{ color: 'black', backgroundColor: 'red' }}
+            style={{ color: 'black', backgroundColor: 'red', margin: '5px' }}
             onClick={props.toggleDelete}
           >
             Delete

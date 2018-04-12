@@ -13,7 +13,7 @@ const Favorites = props => {
       <center>
         <MenuAppBar title="Favorite Videos" />
       </center>
-      <List style={{ paddingTop: '45px', paddingBottom: '45px' }}>
+      <List style={{ paddingTop: '55px', paddingBottom: '45px' }}>
         {not(isEmpty(props.favorites)) ? (
           map(
             video =>
@@ -45,7 +45,6 @@ const Favorites = props => {
 }
 
 const mapStateToProps = state => {
-  console.log('FAVORITES', state.favorites)
   return {
     favorites: state.favorites,
     videos: state.videos

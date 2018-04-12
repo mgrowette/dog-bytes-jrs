@@ -42,7 +42,7 @@ const AddVideo = props => {
       </center>
       <form
         style={{
-          paddingTop: '45px',
+          paddingTop: '55px',
           paddingBottom: '55px',
           paddingLeft: '15px'
         }}
@@ -140,7 +140,12 @@ const AddVideo = props => {
                   : "https://placehold.it/64x64?text='photo'"
               }
             />
-            <Button variant="flat" component="span" color="primary">
+            <Button
+              variant="flat"
+              component="span"
+              color="primary"
+              style={{ margin: '5px' }}
+            >
               Upload Photo
             </Button>
           </FileInput>
@@ -152,14 +157,14 @@ const AddVideo = props => {
             variant="flat"
             component="span"
             color="primary"
-            style={{ backgroundColor: '#EAEDED' }}
+            style={{ backgroundColor: '#EAEDED', margin: '5px' }}
             onClick={props.onSubmit(props.history, props.video)}
           >
             Submit
           </Button>
           <Button
             color="secondary"
-            style={{ backgroundColor: 'black' }}
+            style={{ backgroundColor: 'black', margin: '5px' }}
             onClick={props.cancel(props.history)}
           >
             Cancel

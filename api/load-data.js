@@ -214,7 +214,7 @@ db
       ],
       date: '01/29/18',
       notes: 'No audio from 49:07 to 1:03:41',
-      imgPath: 'octocat.png'
+      imgPath: '/octocat.png'
     },
     {
       _id: 'video_todo-api-introduction-express-github-cli',

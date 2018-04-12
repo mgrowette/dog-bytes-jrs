@@ -33,7 +33,6 @@ export const videos = (state = [], action) => {
       return action.payload
     case CREATE_TAG:
       const newState = flatten(append(state, [action.payload]))
-      console.log('newState', newState)
       return newState
     default:
       return state
@@ -151,15 +150,6 @@ export const toggleExpanded = (state = false, action) => {
       return state
   }
 }
-
-// export const toggleAddChip = (state = { toggleAddChip: false }, action) => {
-//   switch (action.type) {
-//     case TOGGLE_ADD_CHIP:
-//       return merge(state, { toggleAddChip: not(state.toggleAddChip) })
-//     default:
-//       return state
-//   }
-// }
 
 export const newTag = (state = {}, action) => {
   switch (action.type) {

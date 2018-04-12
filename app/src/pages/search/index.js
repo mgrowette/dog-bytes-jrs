@@ -20,6 +20,7 @@ import {
 import { searchField } from '../../action-creators/videos'
 import BottomAppBar from '../../components/BottomAppBar'
 import Divider from 'material-ui/Divider'
+import { Link } from 'react-router-dom'
 
 const Search = props => {
   const videoTags = compose(uniq, flatten, map(video => video.tags))(
@@ -76,7 +77,14 @@ const Search = props => {
         ) ||
         not(isEmpty(flatten(map(tag => tag.chips)(props.searchCriteria.tags))))
           ? compose(
-              map(video => <VideoListItem video={video} key={video.name} />),
+              map(video => (
+                <Link
+                  to={`/videos/${video._id}`}
+                  style={{ textDecoration: 'none', color: 'black' }}
+                >
+                  <VideoListItem video={video} key={video.name} />
+                </Link>
+              )),
               filter(
                 video =>
                   contains(
