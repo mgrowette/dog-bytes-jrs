@@ -101,10 +101,10 @@ const AddVideo = props => {
               onDelete={props.handleDelete}
             />
           </List>
-          <Typography paragraph variant="body2">
-            {`Don't see a tag you want? Add it below!`}
-          </Typography>
           <div>
+            <Typography paragraph variant="body2">
+              {`Don't see a tag you want? Add it below!`}
+            </Typography>
             <TextField
               id="Content"
               label="New Content"
@@ -113,15 +113,11 @@ const AddVideo = props => {
               helperText="What tag would you like to add?"
               onChange={e => props.newTagText('Content', e.target.value)}
             />
-            <div>
-              <Button onClick={props.createTag(props.newTag)}>
-                Add New Tag
-              </Button>
-              <Divider />
-            </div>
+            <Button onClick={props.createTag(props.newTag)}>Add New Tag</Button>
           </div>
         </FormControl>
         <div>
+          <br />
           <FileInput onChange={props.handlePhoto}>
             <img
               alt="video screenshot"
@@ -136,22 +132,26 @@ const AddVideo = props => {
             </Button>
           </FileInput>
         </div>
-        <Button
-          variant="flat"
-          component="span"
-          color="primary"
-          style={{ backgroundColor: '#EAEDED' }}
-          onClick={props.onSubmit(props.history, props.video)}
-        >
-          Submit
-        </Button>
-        <Button
-          color="secondary"
-          style={{ backgroundColor: 'black' }}
-          onClick={props.cancel(props.history)}
-        >
-          Cancel
-        </Button>
+        <Divider />
+        <br />
+        <div>
+          <Button
+            variant="flat"
+            component="span"
+            color="primary"
+            style={{ backgroundColor: '#EAEDED' }}
+            onClick={props.onSubmit(props.history, props.video)}
+          >
+            Submit
+          </Button>
+          <Button
+            color="secondary"
+            style={{ backgroundColor: 'black' }}
+            onClick={props.cancel(props.history)}
+          >
+            Cancel
+          </Button>
+        </div>
         <center>
           <BottomAppBar />
         </center>

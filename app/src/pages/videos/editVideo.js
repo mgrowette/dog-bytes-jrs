@@ -21,10 +21,14 @@ import {
 import {
   TOGGLE_DELETE,
   EDIT_FORM_ADD_CHIP,
-  EDIT_FORM_DELETE_CHIP
+  EDIT_FORM_DELETE_CHIP,
+  CREATE_TAG,
+  CLEAR_NEW_TAG,
+  NEW_TAG_TEXT
 } from '../../constants'
 import { ChipGroup } from '../../components/ChipGroup'
 import List from 'material-ui/List'
+import Divider from 'material-ui/Divider'
 
 const EditVideo = props => {
   const videoTags = compose(uniq, flatten, map(video => video.tags))(
@@ -39,7 +43,7 @@ const EditVideo = props => {
   return (
     <div>
       <center>
-        <MenuAppBar title="Edit Video" showBackArrow={true} {...props} />
+        <MenuAppBar title="Edit Video" />
       </center>
       <form style={{ paddingTop: '45px', paddingLeft: '15px' }}>
         <FormControl noValidate autoComplete="off">
@@ -98,26 +102,41 @@ const EditVideo = props => {
               onDelete={props.handleDelete}
             />
           </List>
+          <div>
+            <TextField
+              id="Content"
+              label="New Content"
+              category="Content"
+              margin="normal"
+              helperText="What tag would you like to add?"
+              onChange={e => props.newTagText('Content', e.target.value)}
+            />
+            <Button onClick={props.createTag(props.newTag)}>Add New Tag</Button>
+          </div>
+          <Divider />
         </FormControl>
-        <Button
-          style={{ backgroundColor: '#AAB7B8' }}
-          onClick={props.onSubmit(props.history, props.video)}
-        >
-          Submit
-        </Button>
-        <Button
-          color="secondary"
-          style={{ backgroundColor: 'black' }}
-          onClick={props.cancel(props.history, props.video)}
-        >
-          Cancel
-        </Button>
-        <Button
-          style={{ color: 'black', backgroundColor: 'red' }}
-          onClick={props.toggleDelete}
-        >
-          Delete
-        </Button>
+        <div>
+          <br />
+          <Button
+            style={{ backgroundColor: '#AAB7B8' }}
+            onClick={props.onSubmit(props.history, props.video)}
+          >
+            Submit
+          </Button>
+          <Button
+            color="secondary"
+            style={{ backgroundColor: 'black' }}
+            onClick={props.cancel(props.history, props.video)}
+          >
+            Cancel
+          </Button>
+          <Button
+            style={{ color: 'black', backgroundColor: 'red' }}
+            onClick={props.toggleDelete}
+          >
+            Delete
+          </Button>
+        </div>
         <Dialog
           open={props.video.toggleDelete}
           aria-labelledby="alert-dialog-title"
@@ -179,7 +198,19 @@ const mapActionsToProps = dispatch => {
     },
     retry: (history, id) => e => {
       dispatch(getVideo(id))
-      // history.push(`/videos/${id}`)
+    },
+    createTag: tag => e => {
+      dispatch({
+        type: CREATE_TAG,
+        payload: tag
+      })
+      dispatch({ type: CLEAR_NEW_TAG })
+    },
+    newTagText: (category, value) => {
+      dispatch({
+        type: NEW_TAG_TEXT,
+        payload: { tags: [{ title: category, chips: [value] }] }
+      })
     }
   }
 }

@@ -46,7 +46,7 @@ const MenuAppBar = props => {
             variant="title"
             color="secondary"
           >
-            Dog Bytes: JRS Videos
+            {props.title}
           </Typography>
         </Toolbar>
       </AppBar>
