@@ -39,9 +39,9 @@ const EditVideo = props => {
   return (
     <div>
       <center>
-        <MenuAppBar title="Edit Video" />
+        <MenuAppBar title="Edit Video" showBackArrow={true} {...props} />
       </center>
-      <form style={{ paddingTop: '45px' }}>
+      <form style={{ paddingTop: '45px', paddingLeft: '15px' }}>
         <FormControl noValidate autoComplete="off">
           <TextField
             id="name"
@@ -107,6 +107,7 @@ const EditVideo = props => {
         </Button>
         <Button
           color="secondary"
+          style={{ backgroundColor: 'black' }}
           onClick={props.cancel(props.history, props.video)}
         >
           Cancel

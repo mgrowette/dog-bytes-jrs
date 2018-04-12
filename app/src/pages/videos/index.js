@@ -13,8 +13,11 @@ const Videos = props => {
       <center>
         <MenuAppBar position="fixed" title="Videos" />
       </center>
-      <List style={{ paddingTop: '55px', paddingBottom: '45px' }}>
-        {map(video => <VideoListItem key={video._id} video={video} />)(videos)}
+      <List style={{ paddingTop: '45px', paddingBottom: '45px' }}>
+        {map(
+          video =>
+            video._id ? <VideoListItem key={video._id} video={video} /> : null
+        )(videos)}
       </List>
       <BottomAppBar />
     </div>

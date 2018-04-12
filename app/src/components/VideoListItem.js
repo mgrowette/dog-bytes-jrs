@@ -14,7 +14,7 @@ const VideoListItem = props => {
         style={{ textDecoration: 'none', color: 'black' }}
       >
         <ListItem>
-          <img src={imgPath} style={{ maxWidth: '60px' }} />
+          <img src={imgPath} alt="video content" style={{ maxWidth: '60px' }} />
           <ListItemText primary={name} secondary={instructor} />
         </ListItem>
       </Link>

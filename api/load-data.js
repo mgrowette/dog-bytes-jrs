@@ -568,7 +568,7 @@ db
       ],
       date: '3/09/18',
       notes: 'No significant audio breaks.',
-      imgPath: 'redux-js.png'
+      imgPath: '/redux-js.png'
     },
     {
       _id: 'video_react-app-menu-app-bar-withStyles-reusable-component',

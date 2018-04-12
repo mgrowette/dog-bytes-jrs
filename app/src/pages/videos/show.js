@@ -109,6 +109,7 @@ class Video extends React.Component {
                 </IconButton>
               </Tooltip>
             </Link>
+
             <IconButton
               className={classnames(classes.expand, {
                 [classes.expandOpen]: props.expanded.toggleExpanded
@@ -117,7 +118,9 @@ class Video extends React.Component {
               aria-expanded={props.expanded}
               aria-label="Show more"
             >
-              <ExpandMoreIcon />
+              <Tooltip id="show-more" title="More Info" placement="top">
+                <ExpandMoreIcon />
+              </Tooltip>
             </IconButton>
           </CardActions>
           <Collapse

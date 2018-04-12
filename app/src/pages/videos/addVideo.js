@@ -31,7 +31,13 @@ const AddVideo = props => {
       <center>
         <MenuAppBar title="Add a Video" />
       </center>
-      <form style={{ paddingTop: '45px', paddingBottom: '45px' }}>
+      <form
+        style={{
+          paddingTop: '45px',
+          paddingBottom: '55px',
+          paddingLeft: '15px'
+        }}
+      >
         <FormControl noValidate autoComplete="off">
           <TextField
             id="name"
@@ -134,11 +140,16 @@ const AddVideo = props => {
           variant="flat"
           component="span"
           color="primary"
+          style={{ backgroundColor: '#EAEDED' }}
           onClick={props.onSubmit(props.history, props.video)}
         >
           Submit
         </Button>
-        <Button color="secondary" onClick={props.cancel(props.history)}>
+        <Button
+          color="secondary"
+          style={{ backgroundColor: 'black' }}
+          onClick={props.cancel(props.history)}
+        >
           Cancel
         </Button>
         <center>

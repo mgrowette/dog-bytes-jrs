@@ -80,7 +80,7 @@ const Search = props => {
               filter(
                 video =>
                   contains(
-                    toLower(propOr('', ['search'], props.searchCriteria)),
+                    toLower(propOr('', 'search', props.searchCriteria)),
                     toLower(video.name) +
                       toLower(video.desc) +
                       toLower(video.instructor)
