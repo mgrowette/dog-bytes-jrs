@@ -54,6 +54,7 @@ export const editVideo = (history, video) => async (dispatch, getState) => {
     .then(res => res.json())
     .catch(err => console.log(err))
   dispatch(getVideo(video._id))
+  dispatch(getVideos)
   history.push(`/videos/${video._id}`)
 }
 

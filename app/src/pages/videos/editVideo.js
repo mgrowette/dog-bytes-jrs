@@ -228,7 +228,10 @@ const mapActionsToProps = dispatch => {
     },
     cancel: (history, video) => e => dispatch(cancelEdit(history, video)),
     toggleDelete: () => dispatch({ type: TOGGLE_DELETE }),
-    deleteVideo: (id, history) => dispatch(deleteVideo(id, history)),
+    deleteVideo: (id, history) => {
+      dispatch({ type: TOGGLE_DELETE })
+      dispatch(deleteVideo(id, history))
+    },
     handleClick: (category, chip) => {
       dispatch({
         type: EDIT_FORM_ADD_CHIP,
