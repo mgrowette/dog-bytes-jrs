@@ -15,13 +15,22 @@ import {
   CREATE_TAG,
   CLEAR_NEW_TAG
 } from '../../constants'
-import List from 'material-ui/List'
 import { ChipGroup } from '../../components/ChipGroup'
 import Typography from 'material-ui/Typography'
 import Divider from 'material-ui/Divider'
 import BottomAppBar from '../../components/BottomAppBar'
+import { withStyles } from 'material-ui/styles'
+
+const styles = theme => ({
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    width: 'flex'
+  }
+})
 
 const AddVideo = props => {
+  const { classes } = props
   const videoTags = compose(uniq, flatten, map(video => video.tags))(
     props.videos
   )
@@ -74,25 +83,21 @@ const AddVideo = props => {
             value={props.video.notes}
             onChange={e => props.onChange('notes', e.target.value)}
           />
-          <List>
-            <ChipGroup
-              data={videoTags}
-              click={props.handleClick}
-              category="Difficulty"
-              video={props.video}
-              onDelete={props.handleDelete}
-            />
-          </List>
-          <List>
-            <ChipGroup
-              data={videoTags}
-              click={props.handleClick}
-              category="Stack"
-              video={props.video}
-              onDelete={props.handleDelete}
-            />
-          </List>
-          <List>
+          <ChipGroup
+            data={videoTags}
+            click={props.handleClick}
+            category="Difficulty"
+            video={props.video}
+            onDelete={props.handleDelete}
+          />
+          <ChipGroup
+            data={videoTags}
+            click={props.handleClick}
+            category="Stack"
+            video={props.video}
+            onDelete={props.handleDelete}
+          />
+          <div className={classes.root}>
             <ChipGroup
               data={videoTags}
               click={props.handleClick}
@@ -100,7 +105,7 @@ const AddVideo = props => {
               video={props.video}
               onDelete={props.handleDelete}
             />
-          </List>
+          </div>
           <div>
             <Typography paragraph variant="body2">
               {`Don't see a tag you want? Add it below!`}
@@ -217,6 +222,6 @@ const mapActionsToProps = dispatch => {
 
 const connector = connect(mapStateToProps, mapActionsToProps)
 
-export default connector(AddVideo)
+export default connector(withStyles(styles)(AddVideo))
 
 // <Button onClick={props.toggleAddChip}>Never Mind</Button>
