@@ -27,10 +27,19 @@ import {
   NEW_TAG_TEXT
 } from '../../constants'
 import { ChipGroup } from '../../components/ChipGroup'
-import List from 'material-ui/List'
 import Divider from 'material-ui/Divider'
+import { withStyles } from 'material-ui/styles'
+
+const styles = theme => ({
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    width: 'flex'
+  }
+})
 
 const EditVideo = props => {
+  const { classes } = props
   const videoTags = compose(uniq, flatten, map(video => video.tags))(
     props.videos
   )
@@ -69,31 +78,35 @@ const EditVideo = props => {
             onChange={e => props.onChange('url', e.target.value)}
           />
           <TextField
+            id="date"
+            label="Date"
+            margin="normal"
+            value={props.video.date}
+            helperText="Enter Date in MM/DD/YY Format"
+            onChange={e => props.onChange('date', e.target.value)}
+          />
+          <TextField
             id="notes"
             label="Notes"
             margin="normal"
             value={props.video.notes}
             onChange={e => props.onChange('notes', e.target.value)}
           />
-          <List>
-            <ChipGroup
-              data={videoTags}
-              click={props.handleClick}
-              category="Difficulty"
-              video={props.video}
-              onDelete={props.handleDelete}
-            />
-          </List>
-          <List>
-            <ChipGroup
-              data={videoTags}
-              click={props.handleClick}
-              category="Stack"
-              video={props.video}
-              onDelete={props.handleDelete}
-            />
-          </List>
-          <List>
+          <ChipGroup
+            data={videoTags}
+            click={props.handleClick}
+            category="Difficulty"
+            video={props.video}
+            onDelete={props.handleDelete}
+          />
+          <ChipGroup
+            data={videoTags}
+            click={props.handleClick}
+            category="Stack"
+            video={props.video}
+            onDelete={props.handleDelete}
+          />
+          <div className={classes.root}>
             <ChipGroup
               data={videoTags}
               click={props.handleClick}
@@ -101,7 +114,7 @@ const EditVideo = props => {
               video={props.video}
               onDelete={props.handleDelete}
             />
-          </List>
+          </div>
           <div>
             <TextField
               id="Content"
@@ -167,7 +180,6 @@ const EditVideo = props => {
 }
 
 const mapStateToProps = state => {
-  console.log('STATE.VIDEO:', state.video)
   return {
     video: state.video,
     videos: state.videos,
@@ -218,4 +230,4 @@ const mapActionsToProps = dispatch => {
 
 const connector = connect(mapStateToProps, mapActionsToProps)
 
-export default connector(EditVideo)
+export default connector(withStyles(styles)(EditVideo))

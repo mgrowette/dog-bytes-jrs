@@ -7,7 +7,7 @@ import {
   EDIT_FIELD_FORM,
   CHANGE_SEARCH_TEXT
 } from '../constants'
-import { map, assoc, join, split, filter } from 'ramda'
+import { map, assoc, join, split, filter, propOr } from 'ramda'
 
 const url = 'http://localhost:5000'
 
@@ -16,7 +16,7 @@ export const getVideos = async (dispatch, getState) => {
   const datedVideos = map(video =>
     assoc(
       'videoDate',
-      join('', filter(x => x !== '/', split('', video.date))),
+      join('', filter(x => x !== '/', split('', propOr('', 'date', video)))),
       video
     )
   )(videos)

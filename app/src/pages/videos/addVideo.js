@@ -77,6 +77,14 @@ const AddVideo = props => {
             onChange={e => props.onChange('youTubeVideoURL', e.target.value)}
           />
           <TextField
+            id="date"
+            label="Date"
+            margin="normal"
+            value={props.video.date}
+            helperText="Enter Date in MM/DD/YY Format"
+            onChange={e => props.onChange('date', e.target.value)}
+          />
+          <TextField
             id="notes"
             label="Notes"
             margin="normal"
@@ -127,8 +135,8 @@ const AddVideo = props => {
             <img
               alt="video screenshot"
               src={
-                props.video.photo
-                  ? props.video.photo
+                props.video.imgPath
+                  ? props.video.imgPath
                   : "https://placehold.it/64x64?text='photo'"
               }
             />
