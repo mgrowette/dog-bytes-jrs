@@ -10,7 +10,7 @@ const Favorites = props => {
   return (
     <div>
       <center>
-        <MenuAppBar />
+        <MenuAppBar title="Favorite Videos" />
       </center>
       <List style={{ paddingTop: '45px', paddingBottom: '45px' }}>
         {not(isEmpty(props.favorites)) ? (

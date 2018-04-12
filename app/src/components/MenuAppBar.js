@@ -5,7 +5,7 @@ import Typography from 'material-ui/Typography'
 import IconButton from 'material-ui/IconButton'
 import GoBackIcon from 'material-ui-icons/KeyboardArrowLeft'
 import { withStyles } from 'material-ui/styles'
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 
 const styles = theme => ({
   root: {
@@ -36,7 +36,7 @@ const MenuAppBar = props => {
               className={classes.firstButton}
               color="secondary"
               aria-label="Menu"
-              onClick={e => props.navigateBack(props.history)}
+              onClick={props.navigateBack}
             >
               <GoBackIcon />
             </IconButton>
@@ -54,14 +54,4 @@ const MenuAppBar = props => {
   )
 }
 
-const mapActionsToProps = dispatch => {
-  return {
-    navigateBack: history => {
-      history.goBack()
-    }
-  }
-}
-
-const connector = connect(mapActionsToProps)
-
-export default connector(withStyles(styles)(MenuAppBar))
+export default withStyles(styles)(MenuAppBar)

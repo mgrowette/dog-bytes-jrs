@@ -59,7 +59,12 @@ class Video extends React.Component {
     return (
       <div>
         <center>
-          <MenuAppBar {...props} showBackArrow={true} title="Video" />
+          <MenuAppBar
+            {...props}
+            showBackArrow={true}
+            title="Video"
+            navigateBack={e => props.navigateBack(props.history)}
+          />
         </center>
         <ReactPlayer
           url={props.video.youTubeVideoURL}
@@ -170,7 +175,8 @@ const mapActionsToProps = dispatch => {
     handleExpandClick: () => dispatch({ type: TOGGLE_EXPANDED }),
     toggleFavorite: () => {
       dispatch(toggleFavorite)
-    }
+    },
+    navigateBack: history => history.push('/videos')
   }
 }
 
