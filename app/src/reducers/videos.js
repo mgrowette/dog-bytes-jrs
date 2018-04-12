@@ -33,6 +33,7 @@ export const videos = (state = [], action) => {
       return action.payload
     case CREATE_TAG:
       const newState = flatten(append(state, [action.payload]))
+      console.log('newState', newState)
       return newState
     default:
       return state

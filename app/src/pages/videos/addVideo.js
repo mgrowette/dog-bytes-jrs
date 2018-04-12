@@ -187,7 +187,7 @@ const mapActionsToProps = dispatch => {
       const blob = compose(path(['target', 'result']), head, head)(results)
       doDispatch('PHOTO', blob)
     },
-    toggleAddChip: () => dispatch({ type: CLEAR_NEW_TAG }),
+
     createTag: tag => e => {
       dispatch({
         type: CREATE_TAG,

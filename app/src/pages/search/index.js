@@ -103,8 +103,6 @@ const Search = props => {
 }
 
 const mapStateToProps = state => {
-  console.log('Search State:', state.searchCriteria)
-  console.log('Search state tags:', state.searchCriteria.tags)
   return {
     videos: state.videos,
     searchCriteria: state.searchCriteria

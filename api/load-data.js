@@ -34,7 +34,8 @@ db
         }
       ],
       date: '01/19/18',
-      notes: 'From 2:39:35 to the end there is no audio.'
+      notes: 'From 2:39:35 to the end there is no audio.',
+      imgPath: '/ramda.png'
     },
     {
       _id: 'video_material-ui-form-validation',
@@ -61,7 +62,9 @@ db
           ]
         }
       ],
-      date: '03/22/18'
+      date: '03/22/18',
+      notes: 'No notes at this time.',
+      imgPath: '/material-ui.png'
     },
     {
       _id: 'video_beginner-ramda-introduction-basic-javascript',
@@ -83,7 +86,8 @@ db
         }
       ],
       date: '01/16/18',
-      notes: 'The last hour and a half of this video is without audio.'
+      notes: 'The last hour and a half of this video is without audio.',
+      imgPath: '/ramda.png'
     },
     {
       _id: 'video_beginner-objects-arrays-ramda-filter-map-reject',
@@ -117,7 +121,8 @@ db
       ],
       date: '01/18/18',
       notes:
-        'From 0:41:10 to 1:44:52, 4:52:20 to 6:54:15, and 7:43:15 to the end there is no audio.'
+        'From 0:41:10 to 1:44:52, 4:52:20 to 6:54:15, and 7:43:15 to the end there is no audio.',
+      imgPath: '/ramda.png'
     },
     {
       _id:
@@ -140,7 +145,9 @@ db
         }
       ],
       date: '01/22/18',
-      notes: 'From 0:47:28 to 1:27:03 and 1:51:25 to 2:03:57 there is no audio.'
+      notes:
+        'From 0:47:28 to 1:27:03 and 1:51:25 to 2:03:57 there is no audio.',
+      imgPath: '/javascript-scope.png'
     },
     {
       _id: 'video_cybertron-level-1-to-5-reviews-map-filter-reduce',
@@ -163,7 +170,8 @@ db
       ],
       date: '01/24/18',
       notes:
-        'From 1:28:49 to 2:06:12, 2:09:57 to 5:21:50, and 5:57:17 to the end there is no audio. '
+        'From 1:28:49 to 2:06:12, 2:09:57 to 5:21:50, and 5:57:17 to the end there is no audio.',
+      imgPath: '/cybertron.jpg'
     },
     {
       _id: 'video_todo-list-cli-part-2',
@@ -183,7 +191,8 @@ db
         }
       ],
       date: '01/26/28',
-      notes: 'No audio breaks.'
+      notes: 'No audio breaks.',
+      imgPath: '/matrix-code.jpg'
     },
     {
       _id: 'video_intro-to-github',
@@ -204,7 +213,8 @@ db
         }
       ],
       date: '1/29/18',
-      notes: 'No audio from 49:07 to 1:03:41'
+      notes: 'No audio from 49:07 to 1:03:41',
+      imgPath: 'octocat.png'
     },
     {
       _id: 'video_todo-api-introduction-express-github-cli',
@@ -225,7 +235,8 @@ db
         }
       ],
       date: '1/31/18',
-      notes: 'No audio from 0:47:15 to 1:00:31 and from 1:59:04 to the end.'
+      notes: 'No audio from 0:47:15 to 1:00:31 and from 1:59:04 to the end.',
+      imgPath: '/api.png'
     },
     {
       _id: 'video_express-api-post-todos-http-ramda-postman-error-handling',
@@ -254,7 +265,8 @@ db
         }
       ],
       date: '2/01/18',
-      notes: 'No audio from 0:52:49 to 1:08:10.'
+      notes: 'No audio from 0:52:49 to 1:08:10.',
+      imgPath: '/http.jpg'
     },
     {
       _id:
@@ -277,7 +289,8 @@ db
         }
       ],
       date: '2/05/18',
-      notes: 'No audio from 2:49:10 to the end.'
+      notes: 'No audio from 2:49:10 to the end.',
+      imgPath: '/express-js.png'
     },
     {
       _id: 'video_async-couchdb-callback-functions-call-stack-browser',
@@ -306,7 +319,8 @@ db
         }
       ],
       date: '2/07/18',
-      notes: 'No audio breaks.'
+      notes: 'No audio breaks.',
+      imgPath: '/call-stack.jpg'
     },
     {
       _id: 'video_review-bulkDocs-introduction-allDocs-promises-async',
@@ -328,7 +342,8 @@ db
       ],
       date: '2/13/18',
       notes:
-        'No audio from 0:39:32 to 1:32:56 and 1:54:27 to 2:07:51. The video essentially ends at 2:48:51, as nothing new is demonstrated on the screen after that time.'
+        'No audio from 0:39:32 to 1:32:56 and 1:54:27 to 2:07:51. The video essentially ends at 2:48:51, as nothing new is demonstrated on the screen after that time.',
+      imgPath: '/js-promise.png'
     },
     {
       _id: 'video_mango-queries-roo-find-search-roo-couchdb',
@@ -349,7 +364,8 @@ db
         }
       ],
       date: '2/14/18',
-      notes: 'No audio from 0:34:03 to 0:48:36'
+      notes: 'No audio from 0:34:03 to 0:48:36',
+      imgPath: '/couchdb-logo.png'
     },
     {
       _id: 'video_promises-quick-and-dirty',
@@ -370,7 +386,8 @@ db
         }
       ],
       date: '2/14/18',
-      notes: 'No significant audio breaks.'
+      notes: 'No significant audio breaks.',
+      imgPath: '/CouchDB.png'
     },
     {
       _id: 'video_testing-tape-supertest-introduction-api',
@@ -392,7 +409,8 @@ db
         }
       ],
       date: '02/14/18',
-      notes: 'No audio until 0:14:48 and from 1:02:20 to 1:50:08.'
+      notes: 'No audio until 0:14:48 and from 1:02:20 to 1:50:08.',
+      imgPath: '/js-testing.jpg'
     },
     {
       _id: 'video_html-css-overview-components-ui-beginner-dynamic',
@@ -413,7 +431,8 @@ db
         }
       ],
       date: '2/26/18',
-      notes: 'No significant audio breaks'
+      notes: 'No significant audio breaks',
+      imgPath: '/CSS.jpg'
     },
     {
       _id:
@@ -436,7 +455,8 @@ db
         }
       ],
       date: '2/20/18',
-      notes: 'No significant audio breaks.'
+      notes: 'No significant audio breaks.',
+      imgPath: '/mysql.jpg'
     },
     {
       _id:
@@ -458,7 +478,8 @@ db
         }
       ],
       date: '2/20/18',
-      notes: 'No audio from 1:06:11 to the end.'
+      notes: 'No audio from 1:06:11 to the end.',
+      imgPath: '/mysql-workbench.png'
     },
     {
       _id:
@@ -480,7 +501,8 @@ db
         }
       ],
       date: '2/20/18',
-      notes: 'No audio from 1:09:06 to the end.'
+      notes: 'No audio from 1:09:06 to the end.',
+      imgPath: '/mysql-workbench-table.png'
     },
     {
       _id: 'video_react-tutorial-introduction-state-beginner-ui',
@@ -501,7 +523,8 @@ db
         }
       ],
       date: '2/28/18',
-      notes: 'No audio from 1:14:26 to 1:36:18'
+      notes: 'No audio from 1:14:26 to 1:36:18',
+      imgPath: '/react-js.png'
     },
     {
       _id: 'video_tachyons-react-app-portfolio-state-components',
@@ -522,7 +545,8 @@ db
         }
       ],
       date: '3/01/18',
-      notes: 'No significant auido breaks.'
+      notes: 'No significant auido breaks.',
+      imgPath: '/tachyons.jpeg'
     },
     {
       _id: 'video_react-app-creating-a-link-to-new-page',
@@ -543,7 +567,8 @@ db
         }
       ],
       date: '3/09/18',
-      notes: 'No significant audio breaks.'
+      notes: 'No significant audio breaks.',
+      imgPath: 'redux-js.png'
     },
     {
       _id: 'video_react-app-menu-app-bar-withStyles-reusable-component',
@@ -564,7 +589,8 @@ db
         }
       ],
       date: '3/15/18',
-      notes: 'No significant audio breaks.'
+      notes: 'No significant audio breaks.',
+      imgPath: '/material-ui2.png'
     }
   ])
   .then(result => console.log('Videos successfully uploaded', result))

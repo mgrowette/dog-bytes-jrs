@@ -11,7 +11,7 @@ const Home = props => {
           <img
             src="/jrs-coding-logo.jpg"
             alt="coding school logo"
-            style={{ maxWidth: '480px' }}
+            style={{ maxWidth: '480px', width: 'flex' }}
           />
         </div>
         <div style={{ paddingBottom: '45px' }}>
