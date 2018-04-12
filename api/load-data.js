@@ -33,7 +33,7 @@ db
           ]
         }
       ],
-      date: '01/19/2018',
+      date: '01/19/18',
       notes: 'From 2:39:35 to the end there is no audio.'
     },
     {
@@ -61,7 +61,7 @@ db
           ]
         }
       ],
-      date: '03/22/2018'
+      date: '03/22/18'
     },
     {
       _id: 'video_beginner-ramda-introduction-basic-javascript',
@@ -82,7 +82,7 @@ db
           chips: ['Ramda', 'Functions', 'Codepen', 'Immutable']
         }
       ],
-      date: '01/16/2018',
+      date: '01/16/18',
       notes: 'The last hour and a half of this video is without audio.'
     },
     {
@@ -115,7 +115,7 @@ db
           ]
         }
       ],
-      date: '01/18/2018',
+      date: '01/18/18',
       notes:
         'From 0:41:10 to 1:44:52, 4:52:20 to 6:54:15, and 7:43:15 to the end there is no audio.'
     },

@@ -7,12 +7,26 @@ import {
   EDIT_FIELD_FORM,
   CHANGE_SEARCH_TEXT
 } from '../constants'
+import { map, assoc, join, split, filter } from 'ramda'
 
 const url = 'http://localhost:5000'
 
 export const getVideos = async (dispatch, getState) => {
   const videos = await fetch(`${url}/videos`).then(res => res.json())
-  dispatch({ type: SET_VIDEOS, payload: videos })
+  const datedVideos = map(video =>
+    assoc(
+      'videoDate',
+      join('', filter(x => x !== '/', split('', video.date))),
+      video
+    )
+  )(videos)
+  function compare(a, b) {
+    if (a.videoDate < b.videoDate) return 1
+    if (a.videoDate > b.videoDate) return -1
+    return 0
+  }
+  const sortedVideos = datedVideos.sort(compare)
+  dispatch({ type: SET_VIDEOS, payload: sortedVideos })
 }
 
 export const getVideo = id => async (dispatch, getState) => {
