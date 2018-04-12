@@ -24,7 +24,13 @@ const Favorites = props => {
               ) : null
           )(props.videos)
         ) : (
-          <h1>Sorry, no favorites found</h1>
+          <center>
+            <h1>Sorry, no favorites found</h1>
+            <h2 style={{ paddingRight: '15px', paddingLeft: '15px' }}>
+              To add to your favorites, browse select the heart icon when
+              viewing a video.
+            </h2>
+          </center>
         )}
       </List>
       <BottomAppBar />
@@ -33,7 +39,7 @@ const Favorites = props => {
 }
 
 const mapStateToProps = state => {
-  console.log('not(isEmpty(props.favorites))', not(isEmpty(state.favorites)))
+  console.log('FAVORITES', state.favorites)
   return {
     favorites: state.favorites,
     videos: state.videos
