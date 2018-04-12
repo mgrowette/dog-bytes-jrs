@@ -65,6 +65,8 @@ export default class FileInput extends React.Component {
                 reader.readAsDataURL(file)
                 break
               }
+              default:
+                break
             }
           })
       )

@@ -98,7 +98,7 @@ export const addVideo = (
     case CHANGE_VIDEO_CHARACTER:
       return merge(state, action.payload)
     case SET_PHOTO:
-      return merge(state, { photo: action.payload })
+      return merge(state, { imgPath: action.payload })
     case ADD_CHIP:
       return assoc(
         'tags',

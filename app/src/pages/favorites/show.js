@@ -16,7 +16,7 @@ import EditIcon from 'material-ui-icons/Edit'
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore'
 import Divider from 'material-ui/Divider'
 import classnames from 'classnames'
-import { join, flatten, map, propOr, isNil, contains } from 'ramda'
+import { join, flatten, map, propOr, contains } from 'ramda'
 import { toggleFavorite } from '../../action-creators/favorites'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import Tooltip from 'material-ui/Tooltip'
@@ -74,19 +74,7 @@ class VideoFavorite extends React.Component {
           style={{ paddingTop: '20px', paddingBottom: '15px' }}
         />
         <Card className={classes.card}>
-          <CardHeader
-            avatar={
-              isNil(props.video.photo) ? null : (
-                <img
-                  alt="screenshot of video"
-                  src={props.video.photo}
-                  imgProps={classes.image}
-                />
-              )
-            }
-            title={props.video.name}
-            subheader={props.video.date}
-          />
+          <CardHeader title={props.video.name} subheader={props.video.date} />
           <CardContent>
             <Typography component="p">{props.video.desc}</Typography>
           </CardContent>

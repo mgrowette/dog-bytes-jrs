@@ -212,7 +212,7 @@ db
           chips: ['Github', 'CLI']
         }
       ],
-      date: '1/29/18',
+      date: '01/29/18',
       notes: 'No audio from 49:07 to 1:03:41',
       imgPath: 'octocat.png'
     },
@@ -234,7 +234,7 @@ db
           chips: ['Express', 'Github', 'CLI']
         }
       ],
-      date: '1/31/18',
+      date: '01/31/18',
       notes: 'No audio from 0:47:15 to 1:00:31 and from 1:59:04 to the end.',
       imgPath: '/api.png'
     },
@@ -264,7 +264,7 @@ db
           ]
         }
       ],
-      date: '2/01/18',
+      date: '02/01/18',
       notes: 'No audio from 0:52:49 to 1:08:10.',
       imgPath: '/http.jpg'
     },
@@ -288,7 +288,7 @@ db
           chips: ['Github', 'Filter', 'Postman', 'Ramda', 'GET', 'POST', 'PUT']
         }
       ],
-      date: '2/05/18',
+      date: '02/05/18',
       notes: 'No audio from 2:49:10 to the end.',
       imgPath: '/express-js.png'
     },
@@ -318,7 +318,7 @@ db
           ]
         }
       ],
-      date: '2/07/18',
+      date: '02/07/18',
       notes: 'No audio breaks.',
       imgPath: '/call-stack.jpg'
     },
@@ -340,7 +340,7 @@ db
           chips: ['bulkDocs', 'CouchDB', 'Promises', 'allDocs', 'Async']
         }
       ],
-      date: '2/13/18',
+      date: '02/13/18',
       notes:
         'No audio from 0:39:32 to 1:32:56 and 1:54:27 to 2:07:51. The video essentially ends at 2:48:51, as nothing new is demonstrated on the screen after that time.',
       imgPath: '/js-promise.png'
@@ -363,7 +363,7 @@ db
           chips: ['Queries', 'Mango', 'Promises', 'Async', 'Roo', 'CouchDB']
         }
       ],
-      date: '2/14/18',
+      date: '02/14/18',
       notes: 'No audio from 0:34:03 to 0:48:36',
       imgPath: '/couchdb-logo.png'
     },
@@ -385,7 +385,7 @@ db
           chips: ['Promises']
         }
       ],
-      date: '2/14/18',
+      date: '02/14/18',
       notes: 'No significant audio breaks.',
       imgPath: '/CouchDB.png'
     },
@@ -430,7 +430,7 @@ db
           chips: ['HTML', 'CSS', 'Express']
         }
       ],
-      date: '2/26/18',
+      date: '02/26/18',
       notes: 'No significant audio breaks',
       imgPath: '/CSS.jpg'
     },
@@ -454,7 +454,7 @@ db
           chips: ['RDBMS', 'SQL', 'MySQL', 'CLI']
         }
       ],
-      date: '2/20/18',
+      date: '02/20/18',
       notes: 'No significant audio breaks.',
       imgPath: '/mysql.jpg'
     },
@@ -477,7 +477,7 @@ db
           chips: ['RDBMS', 'SQL', 'MySQL']
         }
       ],
-      date: '2/20/18',
+      date: '02/20/18',
       notes: 'No audio from 1:06:11 to the end.',
       imgPath: '/mysql-workbench.png'
     },
@@ -500,7 +500,7 @@ db
           chips: ['MySQL', 'SQL', 'RDBMS']
         }
       ],
-      date: '2/20/18',
+      date: '02/20/18',
       notes: 'No audio from 1:09:06 to the end.',
       imgPath: '/mysql-workbench-table.png'
     },
@@ -522,7 +522,7 @@ db
           chips: ['React', 'State']
         }
       ],
-      date: '2/28/18',
+      date: '02/28/18',
       notes: 'No audio from 1:14:26 to 1:36:18',
       imgPath: '/react-js.png'
     },
@@ -544,7 +544,7 @@ db
           chips: ['Tachyons', 'State', 'React']
         }
       ],
-      date: '3/01/18',
+      date: '03/01/18',
       notes: 'No significant auido breaks.',
       imgPath: '/tachyons.jpeg'
     },
@@ -566,7 +566,7 @@ db
           chips: ['React', 'Redux', 'State']
         }
       ],
-      date: '3/09/18',
+      date: '03/09/18',
       notes: 'No significant audio breaks.',
       imgPath: '/redux-js.png'
     },
@@ -588,7 +588,7 @@ db
           chips: ['React', 'Redux', 'State', 'Material UI']
         }
       ],
-      date: '3/15/18',
+      date: '03/15/18',
       notes: 'No significant audio breaks.',
       imgPath: '/material-ui2.png'
     }
