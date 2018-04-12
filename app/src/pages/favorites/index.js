@@ -5,6 +5,7 @@ import List from 'material-ui/List'
 import { map, not, isEmpty, contains } from 'ramda'
 import BottomAppBar from '../../components/BottomAppBar'
 import MenuAppBar from '../../components/MenuAppBar'
+import { Link } from 'react-router-dom'
 
 const Favorites = props => {
   return (
@@ -20,7 +21,12 @@ const Favorites = props => {
                 video._id,
                 JSON.parse(window.localStorage.getItem('favorites'))
               ) ? (
-                <VideoListItem video={video} />
+                <Link
+                  to={`/videos/${video._id}/favorite`}
+                  style={{ textDecoration: 'none', color: 'black' }}
+                >
+                  <VideoListItem video={video} />
+                </Link>
               ) : null
           )(props.videos)
         ) : (
