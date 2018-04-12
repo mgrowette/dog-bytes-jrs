@@ -3,6 +3,13 @@ import { compose, uniq, flatten, map, filter, contains, propOr } from 'ramda'
 import Chip from 'material-ui/Chip'
 
 export const ChipGroup = props => {
+  const tags = compose(
+    uniq,
+    flatten,
+    map(tag => tag.chips),
+    filter(tag => tag.title === `${props.category}`)
+  )(props.data)
+  const sortedTags = tags.sort()
   return (
     <div>
       <h2>{props.category}</h2>
@@ -42,12 +49,8 @@ export const ChipGroup = props => {
                 : null
             }
           />
-        )),
-        uniq,
-        flatten,
-        map(tag => tag.chips),
-        filter(tag => tag.title === `${props.category}`)
-      )(props.data)}
+        ))
+      )(sortedTags)}
     </div>
   )
 }

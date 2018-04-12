@@ -8,19 +8,12 @@ import { withStyles } from 'material-ui/styles'
 // import { connect } from 'react-redux'
 
 const styles = theme => ({
-  root: {
-    width: '100%'
-  },
   flex: {
     flex: 1
   },
   firstButton: {
     marginLeft: -12,
     marginRight: 12
-  },
-  lastButton: {
-    marginLeft: 12,
-    marginRight: -12
   }
 })
 
