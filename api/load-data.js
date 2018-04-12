@@ -360,7 +360,7 @@ db
         { title: 'Stack', chips: ['DB', 'API'] },
         {
           title: 'Content',
-          chips: ['Queries', 'Mango', 'Promises', 'Async', 'Roo', 'CouchDb']
+          chips: ['Queries', 'Mango', 'Promises', 'Async', 'Roo', 'CouchDB']
         }
       ],
       date: '2/14/18',
