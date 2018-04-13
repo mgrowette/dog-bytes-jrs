@@ -26,9 +26,9 @@ const Home = props => {
           <div>
             <Button
               onClick={props.onClick}
-              style={{ backgroundColor: '#D6EAF8' }}
+              style={{ backgroundColor: '#F94330' }}
             >
-              Click Me! I Dare You.
+              Click Me. I Dare You.
             </Button>
             <div style={{ margin: '15px' }}>
               {props.quote ? <h4>{props.quote}</h4> : null}

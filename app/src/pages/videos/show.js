@@ -4,7 +4,7 @@ import { TOGGLE_EXPANDED } from '../../constants'
 import { connect } from 'react-redux'
 import ReactPlayer from 'react-player'
 import { Link } from 'react-router-dom'
-import { getVideo } from '../../action-creators/videos'
+import { getVideo, getVideos } from '../../action-creators/videos'
 import { withStyles } from 'material-ui/styles'
 import Card, { CardHeader, CardContent, CardActions } from 'material-ui/Card'
 import Collapse from 'material-ui/transitions/Collapse'
@@ -165,6 +165,7 @@ const mapActionsToProps = dispatch => {
       dispatch(toggleFavorite)
     },
     navigateBack: history => {
+      dispatch(getVideos)
       history.push('/videos')
     }
   }
