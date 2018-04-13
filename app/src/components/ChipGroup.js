@@ -28,7 +28,7 @@ export const ChipGroup = props => {
                 flatten(
                   map(
                     category => category.chips,
-                    propOr([], ['tags'], props.video)
+                    propOr([], 'tags', props.video)
                   )
                 )
               )
@@ -41,7 +41,7 @@ export const ChipGroup = props => {
                 flatten(
                   map(
                     category => category.chips,
-                    propOr([], ['tags'], props.video)
+                    propOr([], 'tags', props.video)
                   )
                 )
               )

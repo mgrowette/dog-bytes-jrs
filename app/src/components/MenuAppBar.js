@@ -5,7 +5,6 @@ import Typography from 'material-ui/Typography'
 import IconButton from 'material-ui/IconButton'
 import GoBackIcon from 'material-ui-icons/KeyboardArrowLeft'
 import { withStyles } from 'material-ui/styles'
-// import { connect } from 'react-redux'
 
 const styles = theme => ({
   flex: {
