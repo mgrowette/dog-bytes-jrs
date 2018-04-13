@@ -28,7 +28,7 @@ const Search = props => {
   )
 
   return (
-    <div>
+    <div style={{ margin: '15px' }}>
       <center>
         <MenuAppBar title="Search" />
       </center>
