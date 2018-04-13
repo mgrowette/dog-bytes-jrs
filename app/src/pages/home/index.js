@@ -9,7 +9,7 @@ import Paper from 'material-ui/Paper'
 const Home = props => {
   return (
     <div>
-      <Paper style={{ backgroundColor: '#EAEDED' }}>
+      <Paper style={{ backgroundColor: '#EAEDED', paddingBottom: '200px' }}>
         <center>
           <MenuAppBar position="fixed" title="Home Page" />
           <div style={{ textAlign: 'center' }}>
