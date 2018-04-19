@@ -2,10 +2,10 @@ import React from 'react'
 import MenuAppBar from '../../components/MenuAppBar'
 import BottomAppBar from '../../components/BottomAppBar'
 import Button from 'material-ui/Button'
-// import { getQuotes } from '../../action-creators/quotes'
 import { connect } from 'react-redux'
 import Paper from 'material-ui/Paper'
 import { RANDOM_QUOTE } from '../../constants'
+import { not, isEmpty } from 'ramda'
 
 const Home = props => {
   return (
@@ -25,12 +25,16 @@ const Home = props => {
             <h3>{`You've Come to the Right Place`}</h3>
           </div>
           <div>
-            <Button
-              onClick={e => props.onClick(props.quotes)}
-              style={{ backgroundColor: '#F94330' }}
-            >
-              Click Me. I Dare You.
-            </Button>
+            {not(isEmpty(props.quotes)) ? (
+              <Button
+                onClick={() => props.onClick(props.quotes)}
+                style={{ backgroundColor: '#F94330' }}
+              >
+                Click Me. Wisdom Awaits.
+              </Button>
+            ) : (
+              <h4>Loading...</h4>
+            )}
             <div style={{ margin: '15px' }}>
               {props.quote ? <h4>{props.quote}</h4> : null}
               {props.quote ? <h5> - Trip Ottinger, esq. </h5> : null}
