@@ -7,7 +7,7 @@ import {
   newTag
 } from './reducers/videos'
 import { favorites } from './reducers/favorites'
-import { quotes } from './reducers/quotes'
+import { quotes, quote } from './reducers/quotes'
 import { searchCriteria } from './reducers/search'
 import thunk from 'redux-thunk'
 
@@ -20,7 +20,8 @@ const store = createStore(
     searchCriteria,
     favorites,
     newTag,
-    quotes
+    quotes,
+    quote
   }),
   applyMiddleware(thunk)
 )

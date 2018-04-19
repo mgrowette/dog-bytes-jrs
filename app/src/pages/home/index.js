@@ -26,14 +26,14 @@ const Home = props => {
           </div>
           <div>
             <Button
-              onClick={props.onClick}
+              onClick={e => props.onClick(props.quotes)}
               style={{ backgroundColor: '#F94330' }}
             >
               Click Me. I Dare You.
             </Button>
             <div style={{ margin: '15px' }}>
-              {props.quotes ? <h4>placeholder</h4> : null}
-              {props.quotes ? <h5> - Trip Ottinger, esq. </h5> : null}
+              {props.quote ? <h4>{props.quote}</h4> : null}
+              {props.quote ? <h5> - Trip Ottinger, esq. </h5> : null}
             </div>
           </div>
           <BottomAppBar position="fixed" />
@@ -45,13 +45,17 @@ const Home = props => {
 
 const mapStateToProps = state => {
   return {
-    quotes: state.quotes
+    quotes: state.quotes,
+    quote: state.quote
   }
 }
 
 const mapActionsToProps = dispatch => {
   return {
-    onClick: e => dispatch({ type: RANDOM_QUOTE })
+    onClick: quotes => {
+      const randomQuote = quotes[Math.floor(Math.random() * quotes.length)]
+      dispatch({ type: RANDOM_QUOTE, payload: randomQuote })
+    }
   }
 }
 
