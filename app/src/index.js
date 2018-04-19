@@ -4,6 +4,7 @@ import './index.css'
 import App from './App'
 import store from './store'
 import { getVideos } from './action-creators/videos'
+import { getQuotes } from './action-creators/quotes'
 import registerServiceWorker from './registerServiceWorker'
 import { Provider } from 'react-redux'
 import 'typeface-roboto'
@@ -31,4 +32,5 @@ ReactDOM.render(
 )
 registerServiceWorker()
 
+store.dispatch(getQuotes)
 store.dispatch(getVideos)

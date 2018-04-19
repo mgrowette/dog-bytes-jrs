@@ -2,9 +2,10 @@ import React from 'react'
 import MenuAppBar from '../../components/MenuAppBar'
 import BottomAppBar from '../../components/BottomAppBar'
 import Button from 'material-ui/Button'
-import { getQuote } from '../../action-creators/quotes'
+// import { getQuotes } from '../../action-creators/quotes'
 import { connect } from 'react-redux'
 import Paper from 'material-ui/Paper'
+import { RANDOM_QUOTE } from '../../constants'
 
 const Home = props => {
   return (
@@ -31,8 +32,8 @@ const Home = props => {
               Click Me. I Dare You.
             </Button>
             <div style={{ margin: '15px' }}>
-              {props.quote ? <h4>{props.quote}</h4> : null}
-              {props.quote ? <h5> - Trip Ottinger, esq. </h5> : null}
+              {props.quotes ? <h4>placeholder</h4> : null}
+              {props.quotes ? <h5> - Trip Ottinger, esq. </h5> : null}
             </div>
           </div>
           <BottomAppBar position="fixed" />
@@ -44,13 +45,13 @@ const Home = props => {
 
 const mapStateToProps = state => {
   return {
-    quote: state.quotes
+    quotes: state.quotes
   }
 }
 
 const mapActionsToProps = dispatch => {
   return {
-    onClick: e => dispatch(getQuote())
+    onClick: e => dispatch({ type: RANDOM_QUOTE })
   }
 }
 
