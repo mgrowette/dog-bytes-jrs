@@ -2,9 +2,10 @@ import React from 'react'
 import MenuAppBar from '../../components/MenuAppBar'
 import BottomAppBar from '../../components/BottomAppBar'
 import Button from 'material-ui/Button'
-import { getQuote } from '../../action-creators/quotes'
+// import { getQuotes } from '../../action-creators/quotes'
 import { connect } from 'react-redux'
 import Paper from 'material-ui/Paper'
+import { RANDOM_QUOTE } from '../../constants'
 
 const Home = props => {
   return (
@@ -25,7 +26,7 @@ const Home = props => {
           </div>
           <div>
             <Button
-              onClick={props.onClick}
+              onClick={e => props.onClick(props.quotes)}
               style={{ backgroundColor: '#F94330' }}
             >
               Click Me. I Dare You.
@@ -44,13 +45,17 @@ const Home = props => {
 
 const mapStateToProps = state => {
   return {
-    quote: state.quotes
+    quotes: state.quotes,
+    quote: state.quote
   }
 }
 
 const mapActionsToProps = dispatch => {
   return {
-    onClick: e => dispatch(getQuote())
+    onClick: quotes => {
+      const randomQuote = quotes[Math.floor(Math.random() * quotes.length)]
+      dispatch({ type: RANDOM_QUOTE, payload: randomQuote })
+    }
   }
 }
 
